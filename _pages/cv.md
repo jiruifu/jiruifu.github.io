@@ -17,8 +17,8 @@ Education
 
 Research Project
 ======
-### Graduate Research Assistant at Wearable Engienering and Assistive Robotics Laboratory
-#### University of Central Florida
+## Graduate Research Assistant at Wearable Engienering and Assistive Robotics Laboratory
+### University of Central Florida
 * Myoelectric Cable Driven Upper Body Exosuit for Bilateral Human Power Augmentation (Dissertation Project)
   * Engineered a Cable-Driven Soft Exosuit: Designed and built an upper limb exosuit to reduce the risk of work-related musculoskeletal disorders during load-carrying and eye-level tasks.
   * Developed Myoelectric Control Systems: Programmed a proportional myoelectric control system with an admittance controller using LabVIEW and NI FPGA, integrating surface EMG and IMU sensors for precise control of the upper limb exosuit in load-carrying and eye-level applications.
