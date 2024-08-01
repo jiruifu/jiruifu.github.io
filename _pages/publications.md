@@ -1,11 +1,10 @@
 ---
 layout: archive
-title: "Publications"
+title: "Publications (Under Constructon, will have more information soon)"
 permalink: /publications/
 author_profile: true
 ---
 
-  ## Under construction, will be available soon
 
   
 {% if site.author.googlescholar %}
