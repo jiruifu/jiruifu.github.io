@@ -1,0 +1,87 @@
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e6e6e6;
+
+  /* Header */
+  .masthead {
+    background: #2d2d2d;
+  }
+
+  /* Navigation */
+  .greedy-nav {
+    background: #2d2d2d;
+    
+    a {
+      color: #e6e6e6;
+      
+      &:hover {
+        color: #4a9eff;
+      }
+    }
+  }
+
+  /* Content */
+  .page__content {
+    h1, h2, h3, h4, h5, h6 {
+      color: #e6e6e6;
+    }
+  }
+
+  /* Project Cards */
+  .project-card {
+    background: #2d2d2d;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  }
+
+  .project-header {
+    background: #363636;
+    border-color: #404040;
+
+    &:hover {
+      background: #404040;
+    }
+  }
+
+  .tag {
+    background: #404040;
+    color: #e6e6e6;
+  }
+
+  /* Links */
+  a {
+    color: #4a9eff;
+    
+    &:hover {
+      color: #7ab8ff;
+    }
+  }
+
+  /* Dark mode toggle button */
+  .dark-mode-toggle {
+    background: transparent;
+    border: none;
+    color: #e6e6e6;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    
+    &:hover {
+      color: #4a9eff;
+    }
+  }
+}
+
+/* Light mode toggle button */
+.dark-mode-toggle {
+  background: transparent;
+  border: none;
+  color: #2a2a2a;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  
+  &:hover {
+    color: #4a9eff;
+  }
+} 
