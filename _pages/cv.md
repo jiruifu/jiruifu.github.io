@@ -58,7 +58,7 @@ redirect_from:
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 100;
+    z-index: 10000;
   }
 
   .fullscreen-btn {
@@ -72,7 +72,8 @@ redirect_from:
     display: flex;
     align-items: center;
     gap: 5px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 10000;
   }
 
   .fullscreen-btn:hover {
@@ -181,12 +182,14 @@ function toggleFullScreen() {
     button.style.position = 'fixed';
     button.style.right = '10px';
     button.style.top = '10px';
+    button.style.zIndex = '10000';
   } else {
     container.classList.remove('fullscreen');
     icon.classList.remove('fa-compress');
     icon.classList.add('fa-expand');
     text.textContent = 'Full Screen';
     button.style.position = 'absolute';
+    button.style.zIndex = '100';
   }
 }
 
