@@ -12,7 +12,7 @@ redirect_from:
 
 I am currently a post-doctoral scholar work with Dr. Yue Wen and Dr. Helen J. Huang at the University of Central Florida. I received my Ph.D. degree at the University of Central Florida working at the Wearable Engineering and Assistive Robotics (WEAR) Laboratory under Dr. Joon-Hyuk Park. My research focuses on **developing wearable robots to assist and enhance human physical performance and understand how do humans incorporate with wearble robots**. 
 
-# From Wearable Robotics to Neural Interfaces: A Journey Toward Seamless Human-Machine Integration
+# From Wearable Robotics to Neural Interfaces: A Journey Toward Enhancing Lives Through Seamless Human-Machine Integration
 
 Recent advancements in sensors, electronics, materials, and power sources have paved the way for innovative wearable robots designed to aid, enable, or augment human activities. Despite these advancements, several challenges still hinder the effectiveness and practicality of current wearable robots. Fundamental questions remain unanswered:
 
