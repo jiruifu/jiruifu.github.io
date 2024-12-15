@@ -34,9 +34,13 @@ During my Ph.D. training, my major research projects focused on developing a myo
 </div>
 
 <style>
+.page__content {
+    padding-top: 0 !important;
+}
+
 h1 {
     color: #2a7ae2;
-    margin-top: 2em;
+    margin-top: 1.5em;
     margin-bottom: 1em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #eee;
@@ -44,6 +48,8 @@ h1 {
 
 h1:first-of-type {
     margin-top: 0;
+    padding-top: 0;
+    border-top: none;
 }
 
 .news-container {
