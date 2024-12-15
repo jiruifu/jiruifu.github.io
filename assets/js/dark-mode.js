@@ -31,8 +31,11 @@ if (darkMode === 'enabled' || (darkMode === null && prefersDarkScheme.matches)) 
 
 // Add toggle button to navigation
 document.addEventListener('DOMContentLoaded', () => {
-  // Target the correct navigation element
-  const navItems = document.querySelector('.greedy-nav__nav-links');
+  // Try different possible navigation selectors
+  const navItems = document.querySelector('.greedy-nav .visible-links') || 
+                  document.querySelector('.masthead__menu-item ul') ||
+                  document.querySelector('nav ul');
+                  
   if (!navItems) {
     console.log('Navigation container not found');
     return;
