@@ -43,7 +43,7 @@ redirect_from:
 
   .section-title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .section-title h2 {
@@ -63,17 +63,21 @@ redirect_from:
   .pdf-container {
     position: relative;
     width: 100%;
-    height: 80vh;
+    height: 75vh;
     border: 1px solid #ddd;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: white;
+    margin-bottom: 20px;
   }
 
   .pdf-container embed {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     border: none;
   }
 
@@ -108,7 +112,7 @@ redirect_from:
 
   @media screen and (max-width: 768px) {
     .pdf-container {
-      height: 70vh;
+      height: 65vh;
     }
     
     .fallback-message li {
