@@ -1,0 +1,13 @@
+// Dark mode button styling for mobile
+@media screen and (max-width: 768px) {
+  .dark-theme-button {
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    z-index: 20;
+  }
+  
+  .masthead__menu-item {
+    padding-right: 2rem; // Add some padding to prevent overlap
+  }
+} 
