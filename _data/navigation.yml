@@ -17,7 +17,3 @@ main:
     
   # - title: "Guide"
   #   url: /markdown/
-
-  - title: "" # Empty title for dark mode button
-    url: "#"
-    class: "dark-theme-button" # Add a class for the dark mode button

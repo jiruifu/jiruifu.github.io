@@ -1,13 +1,24 @@
-// Dark mode button styling for mobile
+// Dark mode button styling
+.dark-theme-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 5.5rem; // Position it next to sitemap
+  z-index: 20;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  
+  // Optional: add some hover effect
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Adjust for mobile screens
 @media screen and (max-width: 768px) {
   .dark-theme-button {
-    position: absolute;
-    right: 1rem;
-    top: 0.5rem;
-    z-index: 20;
-  }
-  
-  .masthead__menu-item {
-    padding-right: 2rem; // Add some padding to prevent overlap
+    bottom: 0.5rem;
+    right: 4.5rem;
   }
 } 
