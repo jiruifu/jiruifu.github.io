@@ -1,11 +1,6 @@
-// Check for saved dark mode preference
-const darkMode = localStorage.getItem('darkMode');
-
-// Check if user prefers dark mode
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
 // Enable dark mode function
 const enableDarkMode = () => {
+  document.documentElement.classList.add('dark-mode');
   document.body.classList.add('dark-mode');
   localStorage.setItem('darkMode', 'enabled');
   const button = document.querySelector('.dark-mode-toggle');
@@ -16,6 +11,7 @@ const enableDarkMode = () => {
 
 // Disable dark mode function
 const disableDarkMode = () => {
+  document.documentElement.classList.remove('dark-mode');
   document.body.classList.remove('dark-mode');
   localStorage.setItem('darkMode', null);
   const button = document.querySelector('.dark-mode-toggle');
@@ -24,7 +20,10 @@ const disableDarkMode = () => {
   }
 };
 
-// Initialize dark mode based on saved preference or system preference
+// Check for saved dark mode preference
+const darkMode = localStorage.getItem('darkMode');
+
+// Initialize dark mode based on saved preference
 if (darkMode === 'enabled') {
   enableDarkMode();
 }
@@ -42,6 +41,7 @@ const createToggleButton = () => {
   
   const toggleButton = document.createElement('button');
   toggleButton.className = 'dark-mode-toggle';
+  toggleButton.setAttribute('aria-label', 'Toggle dark mode');
   toggleButton.innerHTML = document.body.classList.contains('dark-mode') ? 
     '<i class="fas fa-sun"></i>' : 
     '<i class="fas fa-moon"></i>';
@@ -58,8 +58,12 @@ const createToggleButton = () => {
   });
 };
 
-// Add toggle button when DOM is loaded
-document.addEventListener('DOMContentLoaded', createToggleButton);
+// Initialize the button
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', createToggleButton);
+} else {
+  createToggleButton();
+}
 
-// Add toggle button when turbolinks:load event occurs (if using turbolinks)
+// Re-initialize on navigation (if using turbolinks)
 document.addEventListener('turbolinks:load', createToggleButton);
