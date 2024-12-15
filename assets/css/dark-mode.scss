@@ -3,7 +3,7 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 /* Dark mode toggle button */
@@ -31,23 +31,23 @@
 
 /* Dark mode styles */
 body.dark-mode {
-  background-color: #1a1a1a;
-  color: #e6e6e6;
+  background-color: #1a1a1a !important;
+  color: #e6e6e6 !important;
 
   /* Header */
   .masthead {
-    background: #2d2d2d;
+    background: #2d2d2d !important;
   }
 
   /* Navigation */
   .greedy-nav {
-    background: #2d2d2d;
+    background: #2d2d2d !important;
     
     a {
-      color: #e6e6e6;
+      color: #e6e6e6 !important;
       
       &:hover {
-        color: #4a9eff;
+        color: #4a9eff !important;
       }
     }
   }
@@ -55,36 +55,36 @@ body.dark-mode {
   /* Content */
   .page__content {
     h1, h2, h3, h4, h5, h6 {
-      color: #e6e6e6;
+      color: #e6e6e6 !important;
     }
   }
 
   /* Project Cards */
   .project-card {
-    background: #2d2d2d;
+    background: #2d2d2d !important;
     box-shadow: 0 2px 15px rgba(0,0,0,0.2);
   }
 
   .project-header {
-    background: #363636;
+    background: #363636 !important;
     border-color: #404040;
 
     &:hover {
-      background: #404040;
+      background: #404040 !important;
     }
   }
 
   .tag {
-    background: #404040;
-    color: #e6e6e6;
+    background: #404040 !important;
+    color: #e6e6e6 !important;
   }
 
   /* Links */
   a {
-    color: #4a9eff;
+    color: #4a9eff !important;
     
     &:hover {
-      color: #7ab8ff;
+      color: #7ab8ff !important;
     }
   }
 

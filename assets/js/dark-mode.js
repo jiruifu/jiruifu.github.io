@@ -25,13 +25,18 @@ const disableDarkMode = () => {
 };
 
 // Initialize dark mode based on saved preference or system preference
-if (darkMode === 'enabled' || (darkMode === null && prefersDarkScheme.matches)) {
+if (darkMode === 'enabled') {
   enableDarkMode();
 }
 
-// Add toggle button to navigation
-document.addEventListener('DOMContentLoaded', () => {
-  // Create a container for the toggle button
+// Create and add the toggle button
+const createToggleButton = () => {
+  // Remove any existing button first
+  const existingContainer = document.querySelector('.dark-mode-container');
+  if (existingContainer) {
+    existingContainer.remove();
+  }
+
   const toggleContainer = document.createElement('div');
   toggleContainer.className = 'dark-mode-container';
   
@@ -42,11 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '<i class="fas fa-moon"></i>';
   
   toggleContainer.appendChild(toggleButton);
-  
-  // Add to the body instead of navigation
   document.body.appendChild(toggleContainer);
 
-  // Add click event
   toggleButton.addEventListener('click', () => {
     if (document.body.classList.contains('dark-mode')) {
       disableDarkMode();
@@ -54,4 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
       enableDarkMode();
     }
   });
-});
+};
+
+// Add toggle button when DOM is loaded
+document.addEventListener('DOMContentLoaded', createToggleButton);
+
+// Add toggle button when turbolinks:load event occurs (if using turbolinks)
+document.addEventListener('turbolinks:load', createToggleButton);
