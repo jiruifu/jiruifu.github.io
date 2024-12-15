@@ -31,26 +31,20 @@ if (darkMode === 'enabled' || (darkMode === null && prefersDarkScheme.matches)) 
 
 // Add toggle button to navigation
 document.addEventListener('DOMContentLoaded', () => {
-  // Try different possible navigation selectors
-  const navItems = document.querySelector('.greedy-nav .visible-links') || 
-                  document.querySelector('.masthead__menu-item ul') ||
-                  document.querySelector('nav ul');
-                  
-  if (!navItems) {
-    console.log('Navigation container not found');
-    return;
-  }
-
+  // Create a container for the toggle button
+  const toggleContainer = document.createElement('div');
+  toggleContainer.className = 'dark-mode-container';
+  
   const toggleButton = document.createElement('button');
   toggleButton.className = 'dark-mode-toggle';
   toggleButton.innerHTML = document.body.classList.contains('dark-mode') ? 
     '<i class="fas fa-sun"></i>' : 
     '<i class="fas fa-moon"></i>';
   
-  const listItem = document.createElement('li');
-  listItem.className = 'nav-item';
-  listItem.appendChild(toggleButton);
-  navItems.appendChild(listItem);
+  toggleContainer.appendChild(toggleButton);
+  
+  // Add to the body instead of navigation
+  document.body.appendChild(toggleContainer);
 
   // Add click event
   toggleButton.addEventListener('click', () => {
