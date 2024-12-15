@@ -4,21 +4,24 @@ const darkMode = localStorage.getItem('darkMode');
 // Check if user prefers dark mode
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Get the toggle button
-const darkModeToggle = document.querySelector('.dark-mode-toggle');
-
 // Enable dark mode function
 const enableDarkMode = () => {
   document.body.classList.add('dark-mode');
   localStorage.setItem('darkMode', 'enabled');
-  darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  const button = document.querySelector('.dark-mode-toggle');
+  if (button) {
+    button.innerHTML = '<i class="fas fa-sun"></i>';
+  }
 };
 
 // Disable dark mode function
 const disableDarkMode = () => {
   document.body.classList.remove('dark-mode');
   localStorage.setItem('darkMode', null);
-  darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  const button = document.querySelector('.dark-mode-toggle');
+  if (button) {
+    button.innerHTML = '<i class="fas fa-moon"></i>';
+  }
 };
 
 // Initialize dark mode based on saved preference or system preference
@@ -28,7 +31,13 @@ if (darkMode === 'enabled' || (darkMode === null && prefersDarkScheme.matches)) 
 
 // Add toggle button to navigation
 document.addEventListener('DOMContentLoaded', () => {
-  const navItems = document.querySelector('.masthead__menu-item ul');
+  // Target the correct navigation element
+  const navItems = document.querySelector('.greedy-nav__nav-links');
+  if (!navItems) {
+    console.log('Navigation container not found');
+    return;
+  }
+
   const toggleButton = document.createElement('button');
   toggleButton.className = 'dark-mode-toggle';
   toggleButton.innerHTML = document.body.classList.contains('dark-mode') ? 
@@ -36,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '<i class="fas fa-moon"></i>';
   
   const listItem = document.createElement('li');
-  listItem.className = 'masthead__menu-item';
+  listItem.className = 'nav-item';
   listItem.appendChild(toggleButton);
   navItems.appendChild(listItem);
 
