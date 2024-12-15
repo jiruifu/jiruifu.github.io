@@ -48,7 +48,7 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : @jiruifneural.bsky.social
+  bluesky          : "@jiruifneural.bsky.social"
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -57,7 +57,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : 
-  linkedin         : www.linkedin.com/in/jirui-fu
+  linkedin         : "https://www.linkedin.com/in/jirui-fu"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -65,7 +65,7 @@ author:
   steam            : # Username
   telegram         : # URL
   tumblr           : # Username
-  twitter          : @JiruiF
+  twitter          : "@JiruiF"
   vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
