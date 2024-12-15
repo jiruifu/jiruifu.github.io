@@ -10,7 +10,8 @@ redirect_from:
 <div class="pdf-wrapper">
   <div class="pdf-controls">
     <button onclick="toggleFullScreen()" class="fullscreen-btn">
-      <i class="fas fa-expand"></i> Full Screen
+      <i class="fas fa-expand"></i>
+      <span>Full Screen</span>
     </button>
   </div>
   
@@ -170,17 +171,22 @@ function toggleFullScreen() {
   const container = document.getElementById('pdfContainer');
   const button = document.querySelector('.fullscreen-btn');
   const icon = button.querySelector('i');
+  const text = button.querySelector('span');
   
   if (!container.classList.contains('fullscreen')) {
     container.classList.add('fullscreen');
     icon.classList.remove('fa-expand');
     icon.classList.add('fa-compress');
-    button.querySelector('span').textContent = 'Exit Full Screen';
+    text.textContent = 'Exit Full Screen';
+    button.style.position = 'fixed';
+    button.style.right = '10px';
+    button.style.top = '10px';
   } else {
     container.classList.remove('fullscreen');
     icon.classList.remove('fa-compress');
     icon.classList.add('fa-expand');
-    button.querySelector('span').textContent = 'Full Screen';
+    text.textContent = 'Full Screen';
+    button.style.position = 'absolute';
   }
 }
 
