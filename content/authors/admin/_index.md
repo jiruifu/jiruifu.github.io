@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Jirui Fu, Ph.D.
+title: Jirui "Jerry" Fu, Ph.D.
 
 # Name pronunciation (optional)
 name_pronunciation: 

@@ -1,17 +1,19 @@
 ---
-title: 'An example conference paper'
+title: 'Deep Reinforcement Learning Based Upper Limb Neuromusculoskeletal Simulator for Modelling Human Motor Control'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - admin
-  - Robert Ford
+  - Jirui Fu
+  - Renoa Choudhury
+  - Joon-Hyuk Park
 
 # Author notes (optional)
 author_notes:
-  - 'Equal contribution'
-  - 'Equal contribution'
+  - 'First Author'
+  - 'Second Author'
+  - 'Corresponding Author'
 
 date: '2013-07-01T00:00:00Z'
 doi: ''
