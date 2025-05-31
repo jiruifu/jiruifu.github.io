@@ -1,13 +1,13 @@
 ---
 # Display name
-title: Jirui Fu
+title: Jirui Fu, Ph.D.
 
 # Name pronunciation (optional)
 # name_pronunciation: Chien Shiung Wu
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Ji Rui
+last_name: Fu
 
 # Status emoji
 status:
