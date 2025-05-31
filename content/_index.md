@@ -42,12 +42,10 @@ sections:
         padding: [0, 0, 0, 0]
   - block: markdown
     content:
-      title: 'Welcome 👋'
+      title: 'Who Am I?'
       subtitle: ''
       text: |-
-        Use this area to speak to your mission. I'm a research scientist in the Moonshot team at DeepMind. I blog about machine learning, deep learning, and moonshots.
-
-        **Specialties:** Analytics & Data, Leadership, Programming, Strategic Planning, Writing & Editing
+        I am a post-doctoral research scholar in the Department of Mechanical and Aerospace Engineering at the University of Central Florida, collaborating with Dr. Helen J. Huang and Dr. Yue Wen. My research encompasses three interconnected domains centered on neurorehabilitation: (1) neural machine interfaces utilizing high-density surface electromyography (HD-sEMG) for rehabilitation applications, (2) the development and implementation of rehabilitative wearable robotic systems, and (3) Mobile Brain/Body Imaging (MoBI) methodologies employing electroencephalography (EEG) to facilitate the control of rehabilitative devices.
     design:
       columns: '1'
   - block: collection
