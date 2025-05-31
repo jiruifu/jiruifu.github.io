@@ -44,7 +44,7 @@ jobs:
           ${{ runner.os }}-hugomod-
     - name: Setup Pages
       id: pages
-      uses: actions/configure-pages@v5
+      uses: actions/configure-pages@v4
     - name: Build with Hugo
       env:
         HUGO_ENVIRONMENT: production
@@ -54,7 +54,7 @@ jobs:
     - name: Generate Pagefind search index
       run: npx pagefind --site "public"
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v4
+      uses: actions/upload-pages-artifact@v3
       with:
         path: ./public
     - name: Download artifact
