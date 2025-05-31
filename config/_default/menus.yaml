@@ -7,7 +7,7 @@ main:
   - name: Bio
     url: /
     weight: 10
-  - name: Research
+  - name: Publications
     url: /publication
     weight: 11
   - name: Talks
