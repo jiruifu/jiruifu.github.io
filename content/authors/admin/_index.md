@@ -79,8 +79,8 @@ education:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
 work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
+  - position: Post-doctoral Scholar
+    company_name: University of Central Florida
     company_url: ''
     company_logo: ''
     date_start: 2021-01-01
