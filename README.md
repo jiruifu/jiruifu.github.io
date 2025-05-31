@@ -1,28 +1,45 @@
-# Sponsors: Academic CV Pro Theme
+# Personal Academic Website
 
-[![Screenshot](./.github/preview.webp)](https://hugoblox.com/templates/)
+This repository contains the source code for my personal academic website, showcasing my research work, publications, and professional experience in the field of neurorehabilitation and wearable robotics.
 
-The Hugo **Academic CV Pro Template** empowers you to easily create your job-winning online résumé, showcase your expertise, and share your social profiles to grow your audience.
+## About
 
-️**Trusted by 250,000+ researchers, educators, and students.** Highly customizable via the integrated **no-code, block-based website builder**, making every site truly personalized ⭐⭐⭐⭐⭐
+This is a personal academic website built using [Academic](https://wowchemy.com/), a powerful and flexible framework for creating academic websites. The website serves as a professional platform to share my research work, publications, and academic journey.
 
-[![Get Started](https://img.shields.io/badge/-Get%20started-ff4655?style=for-the-badge)](https://hugoblox.com/templates/)
-[![Discord](https://img.shields.io/discord/722225264733716590?style=for-the-badge)](https://discord.com/channels/722225264733716590/742892432458252370/742895548159492138)  
-[![Twitter Follow](https://img.shields.io/twitter/follow/GetResearchDev?label=Follow%20on%20Twitter)](https://twitter.com/GetResearchDev)
+## Research Focus
 
-[Check out the latest demo](https://hugo-resume-theme.netlify.app/) of what you'll get in less than 10 minutes, or [view the showcase](https://hugoblox.com/creators/).
+My research encompasses three interconnected domains centered on neurorehabilitation:
+1. Neural machine interfaces utilizing high-density surface electromyography (HD-sEMG)
+2. Development and implementation of rehabilitative wearable robotic systems
+3. Mobile Brain/Body Imaging (MoBI) methodologies using electroencephalography (EEG)
 
-The integrated [**Hugo Blox**](https://hugoblox.com) website builder and CMS makes it easy to create a beautiful website for free. Edit your site in the CMS (or your favorite editor), generate it with [Hugo](https://github.com/gohugoio/hugo), and deploy with GitHub or Netlify. Customize anything on your site with widgets, light/dark themes, and language packs.
+## Website Features
 
-- 👉 [**Get Started**](https://hugoblox.com/templates/)
-- 📚 [View the **documentation**](https://docs.hugoblox.com/)
-- 💬 [Chat with the **Hugo Blox Builder community**](https://discord.gg/z8wNYzb) or [**Hugo community**](https://discourse.gohugo.io)
-- ⬇️ **Automatically import citations from BibTeX** with the [Hugo Academic CLI](https://github.com/GetRD/academic-file-converter)
-- 🐦 Share your new site with the community: [@GetResearchDev](https://twitter.com/GetResearchDev) [@GeorgeCushen](https://twitter.com/GeorgeCushen) [#MadeWithHugoBlox](https://twitter.com/search?q=%23MadeWithHugoBlox&src=typed_query)
-- 🗳 [Take the survey and help us improve #OpenSource](https://forms.gle/NioD9VhUg7PNmdCAA)
-- 🚀 [Contribute improvements](https://github.com/HugoBlox/hugo-blox-builder/blob/main/CONTRIBUTING.md) or [suggest improvements](https://github.com/HugoBlox/hugo-blox-builder/issues)
-- ⬆️ **Updating?** View the [Update Guide](https://docs.hugoblox.com/) and [Release Notes](https://github.com/HugoBlox/hugo-blox-builder/releases)
+- Professional biography and research overview
+- Publication list and academic achievements
+- Research projects and ongoing work
+- Contact information and professional links
+- Responsive design for all devices
 
-## Demo credits
+## Technical Details
 
-- [Unsplash](https://unsplash.com/) images
+- Built with [Academic](https://wowchemy.com/)
+- Hosted on GitHub Pages
+- Customized with personal content and styling
+
+## Local Development
+
+To run this website locally:
+
+1. Clone the repository
+2. Install dependencies (if any)
+3. Run the development server
+4. Access the website at `localhost:1313`
+
+## Contact
+
+For any questions or collaboration opportunities, please visit the contact section on my website.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
