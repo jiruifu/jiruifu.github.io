@@ -1,6 +1,6 @@
 ---
 title: CV
-date: 2023-10-24
+date: 2025-05-31
 pager: false
 ---
 
