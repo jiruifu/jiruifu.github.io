@@ -54,7 +54,7 @@ jobs:
     - name: Generate Pagefind search index
       run: npx pagefind --site "public"
     - name: Upload artifact
-      uses: uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4
     - name: Download artifact
       uses: actions/download-artifact@v4
       with:
