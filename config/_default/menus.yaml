@@ -17,7 +17,7 @@ main:
     url: experience/
     weight: 20
   - name: Projects
-    url: projects/
+    url: /projects
     weight: 30
   - name: Curriculum Vitae
     url: cv/
