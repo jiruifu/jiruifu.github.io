@@ -1,30 +1,24 @@
 ---
-title: Uses
+title: CV
 date: 2023-10-24
 pager: false
 ---
 
-The idea of a Uses page is to tell you about the stuff I use.
+# My Curriculum Vitae
 
-Make sure to check out [uses.tech](https://uses.tech/) for a list of everyone's Uses pages!
+Welcome to my CV page. Here you can find my professional experience, education, and skills.
 
-I often get asked about what software or hardware I use, so this page will serve as a living document and a place to point curious readers to when I get asked.
+## Download CV
 
-## Editor + Terminal
+You can view and download my CV in PDF format [here](/CV.pdf).
 
-- [Visual Studio Code](https://code.visualstudio.com/) is my current editor
-- Chrome is my main browser
-- iTerm2 is my terminal
+## Quick Overview
 
-## Desktop Apps
+This CV contains:
+- Professional Experience
+- Education Background
+- Technical Skills
+- Projects
+- Certifications
 
-- Better Touch Tool for window management and custom keyboard shortcuts
-
-## PDF Reader
-
-- [Adobe Acrobat Reader](https://www.adobe.com/acrobat/pdf-reader.html) for viewing and basic PDF operations
-- [PDF Expert](https://pdfexpert.com/) for advanced PDF editing and annotation
-
-## My CV
-
-You can view my CV [here](/CV.pdf).
+Feel free to reach out if you have any questions about my qualifications or experience.
