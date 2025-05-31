@@ -3,7 +3,7 @@
 title: Jirui Fu, Ph.D.
 
 # Name pronunciation (optional)
-name_pronunciation: Jirui Fu
+name_pronunciation: 
 
 # Full name (for SEO)
 first_name: Ji Rui
