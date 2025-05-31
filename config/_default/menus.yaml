@@ -19,6 +19,6 @@ main:
   - name: Projects
     url: projects/
     weight: 30
-  - name: Uses
+  - name: CV
     url: uses/
     weight: 40
