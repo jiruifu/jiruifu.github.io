@@ -3,7 +3,7 @@
 title: Jirui Fu, Ph.D.
 
 # Name pronunciation (optional)
-# name_pronunciation: Chien Shiung Wu
+name_pronunciation: Jirui Fu
 
 # Full name (for SEO)
 first_name: Ji Rui
