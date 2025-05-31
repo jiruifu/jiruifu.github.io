@@ -19,3 +19,12 @@ I often get asked about what software or hardware I use, so this page will serve
 ## Desktop Apps
 
 - Better Touch Tool for window management and custom keyboard shortcuts
+
+## PDF Reader
+
+- [Adobe Acrobat Reader](https://www.adobe.com/acrobat/pdf-reader.html) for viewing and basic PDF operations
+- [PDF Expert](https://pdfexpert.com/) for advanced PDF editing and annotation
+
+## My CV
+
+You can view my CV [here](/CV.pdf).
