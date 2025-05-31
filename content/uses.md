@@ -10,7 +10,7 @@ Welcome to my CV page. Here you can find my professional experience, education, 
 
 ## Download CV
 
-You can view and download my CV in PDF format [here](/CV.pdf).
+You can view and download my CV in PDF format [here](uploads/CV.pdf).
 
 ## Quick Overview
 
