@@ -28,7 +28,7 @@ publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
 publication: In *2023 IEEE International Conference on Systems, Man, and Cybernetics (SMC)*
-publication_short: In *IEEE SMC 2023*
+publication_short: In *2023 IEEE International Conference on Systems, Man, and Cybernetics (SMC)*
 
 abstract: The neuromusculoskeletal modeling and simulator (NMMS) have been widely utilized in various fields and applications. The deep reinforcement learning (DRL) algorithm is a promising method to study human motor controls and movement biomechanics via NMMS without experimental data. However, existing research lacks exploration of the DRL implementation for controlling neuromusculoskeletal simulators, and only a few have presented myoelectric control systems applied to the DRL-based NMMS. In this work, an off-policy DRL algorithm, Deep Deterministic Policy Gradient (DDPG), was implemented on an upper limb NMMS with two different types of action space - direct muscle activation output and PD-based internal model, and compared their control performance. In addition, we evaluated the performance of proportional myoelectric control systems implemented on the DRL-based upper limb NMMS. The results indicate that the DRL-based NMMS can execute upper limb movements accurately, and the proportional myoelectric control system reduced the muscle activation under both types of action space. Moreover, the PD-based internal model action space shows better learning and error-tracking performance than the direct muscle activation output action space.
 
@@ -77,12 +77,3 @@ url_video: ''
 # slides: example
 ---
 
-{{% callout note %}}
-Click the _Cite_ button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-{{% /callout %}}
-
-{{% callout note %}}
-Create your slides in Markdown - click the _Slides_ button to check out the example.
-{{% /callout %}}
-
-Add the publication's **full text** or **supplementary notes** here. You can use rich formatting such as including [code, math, and images](https://docs.hugoblox.com/content/writing-markdown-latex/).
