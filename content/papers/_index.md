@@ -8,7 +8,7 @@ view: citation
 sections:
   - block: collection
     content:
-      title: Conference Paper
+      title: Conference Papers
       filters:
         folders:
           - ./papers/conference
