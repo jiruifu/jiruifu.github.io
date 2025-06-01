@@ -1,9 +1,8 @@
 ---
 title: Research Papers
 cms_exclude: true
-
-# View.
 view: citation
+---
 
 ## Conference Papers
 
@@ -34,5 +33,3 @@ view: citation
     view="citation"
     columns="1"
 >}}
-
----
