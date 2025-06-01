@@ -5,41 +5,34 @@ cms_exclude: true
 # View.
 view: citation
 
-sections:
-  - block: collection
-    content:
-      title: Conference Papers
-      filters:
-        folders:
-          - ./papers/conference
-      sort_by: 'Date'
-      sort_ascending: false
-    design:
-      columns: '1'
-      view: citation
+## Conference Papers
 
-  - block: collection
-    content:
-      title: Book Chapters
-      filters:
-        folders:
-          - ./papers/book_chapter
-      sort_by: 'Date'
-      sort_ascending: false
-    design:
-      columns: '1'
-      view: citation
+{{< collection
+    folder="papers/conference"
+    sort_by="date"
+    sort_ascending="false"
+    view="citation"
+    columns="1"
+>}}
 
-  - block: collection
-    content:
-      title: Peer-Reviewed Journals
-      filters:
-        folders:
-          - ./papers/journal
-      sort_by: 'Date'
-      sort_ascending: false
-    design:
-      columns: '1'
-      view: citation
+## Book Chapters
+
+{{< collection
+    folder="papers/book_chapter"
+    sort_by="date"
+    sort_ascending="false"
+    view="citation"
+    columns="1"
+>}}
+
+## Peer-Reviewed Journals
+
+{{< collection
+    folder="papers/journal"
+    sort_by="date"
+    sort_ascending="false"
+    view="citation"
+    columns="1"
+>}}
 
 ---
