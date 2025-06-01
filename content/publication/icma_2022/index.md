@@ -1,23 +1,27 @@
 ---
-title: 'An example conference paper'
+title: 'A Bilateral Six Degree of Freedom Cable-driven Upper Body Exosuit'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-  - admin
-  - Robert Ford
+  - Jirui Fu
+  - Saba M. Hosseini
+  - Rylan Simpson
+  - Austin Brooks
+  - Ryan Huff
+  - Joon-Hyuk Park
 
 # Author notes (optional)
-author_notes:
-  - 'Equal contribution'
-  - 'Equal contribution'
+# author_notes:
+#   - 'Equal contribution'
+#   - 'Equal contribution'
 
-date: '2013-07-01T00:00:00Z'
-doi: ''
+date: '2022-08-22'
+doi: '10.1109/ICMA54519.2022.9856241'
 
 # Schedule page publish date (NOT publication's date).
-publishDate: '2017-01-01T00:00:00Z'
+publishDate: '2025-05-31'
 
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
@@ -25,10 +29,10 @@ publishDate: '2017-01-01T00:00:00Z'
 publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
-publication: In *Hugo Blox Builder Conference*
-publication_short: In *ICW*
+publication: In *2022 IEEE International Conference on Mechatronics and Automation*
+publication_short: In *2022 IEEE ICMA*
 
-abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
+abstract: The demand for upper limb wearable robots has grown over the past decades across various fields for rehabilitative and assistive applications. While many of this kind have been developed and used in various applications, very few can achieve bimanual task assistance with multiple controlled degrees of freedom (DOF). A bilateral 6-DOF Cable-driven Upper Body Exosuit (CUBE) is presented in this work, designed to aid bimanual tasks via Bowden cable interface to transmit power from actuators placed on the torso to the cuffs on the upper and lower arms. Inertial measurement units (IMUs) and tension sensors are integrated to track the joint angles and cable tension, respectively, to control the position or force exerted through the suit. A preliminary evaluation was performed to assess how CUBE affects the user’s effort and performance during bimanual tasks. The results show a reduction in muscle activation from anterior deltoid, medial deltoid, and biceps femoris on both left and right body sides. The benefits of the current design are limited, and the controllers implemented are very basic and low level only, which must be further improved to promote efficient and robust human-robot interactions. Leveraging the current CUBE architecture, our next step is to realize more adaptive and optimal control schemes such as myoelectric and reinforcement learning controls.
 
 # Summary. An optional shortened abstract.
 summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
