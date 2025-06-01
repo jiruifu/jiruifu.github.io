@@ -3,23 +3,26 @@ title: Publications
 cms_exclude: true
 
 # View.
-# view: citation
+view: citation
 
 # # Optional header image (relative to `static/media/` folder).
 # banner:
 #   caption: ''
 #   image: ''
+
 sections:
   - block: collection
     content:
       title: Conference Proceedings
       filters:
         folders:
-          - publication/CONF*
+          - publication
+        publication_types:
+          - 1
       sort_by: 'Date'
       sort_ascending: false
     design:
-      columns: '2'
+      columns: '1'
       view: citation
 
   - block: collection
@@ -27,11 +30,13 @@ sections:
       title: Peer-Reviewed Journals
       filters:
         folders:
-          - publication/journal-article
+          - publication
+        publication_types:
+          - 2
       sort_by: 'Date'
       sort_ascending: false
     design:
-      columns: '2'
+      columns: '1'
       view: citation
 
   - block: collection
@@ -39,11 +44,13 @@ sections:
       title: Book Chapters
       filters:
         folders:
-          - publication/book
+          - publication
+        publication_types:
+          - 4
       sort_by: 'Date'
       sort_ascending: false
     design:
-      columns: '2'
+      columns: '1'
       view: citation
 
 ---
