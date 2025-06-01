@@ -10,9 +10,6 @@ main:
   - name: Publications
     url: /publication
     weight: 11
-  - name: Papers
-    url: /papers
-    weight: 12
   - name: Talks
     url: /event
     weight: 12
