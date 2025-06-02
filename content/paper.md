@@ -1,7 +1,7 @@
 ---
 title: Paper Published
 date: 2025-06-01
-pager: true
+pager: false
 ---
 
 ## Peer-reviewed Conference
