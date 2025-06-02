@@ -22,3 +22,6 @@ main:
   - name: Curriculum Vitae
     url: cv/
     weight: 40
+  - name: Paper
+    url: paper/
+    weight: 50
