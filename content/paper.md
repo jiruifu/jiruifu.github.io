@@ -1,7 +1,7 @@
 ---
-title: Uses
-date: 2023-10-24
-pager: false
+title: Paper Published
+date: 2025-06-01
+pager: true
 ---
 
 ## Peer-reviewed Conference
