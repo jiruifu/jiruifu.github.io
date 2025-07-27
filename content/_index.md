@@ -25,10 +25,10 @@ sections:
   - block: stats
     content:
       items:
-        - statistic: "12"
+        - statistic: "13"
           description: |
             Publications
-        - statistic: "90"
+        - statistic: "108"
           description: |
             Citations
         - statistic: "3"
