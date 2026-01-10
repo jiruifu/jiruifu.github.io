@@ -172,6 +172,29 @@ header {
     transform: scale(1.05);
 }
 
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1001;
+}
+
+#menu-animation-container {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .theme-icon {
     width: 18px;
     height: 18px;
@@ -941,36 +964,78 @@ footer p {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
+        flex-direction: row;
+        gap: 0;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .nav-right {
-        width: 100%;
-        justify-content: space-between;
+        display: flex;
         align-items: center;
+        gap: 1rem;
     }
 
     .nav-name {
         font-size: 1.1rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
     }
 
+    /* Hide regular menu on mobile */
     .nav-menu {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        flex: 1;
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--nav-bg);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        box-shadow: 0 4px 8px var(--nav-shadow);
+        z-index: 999;
+        width: 100%;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+
+    /* Show menu when mobile menu is open */
+    .nav-menu.mobile-open {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
     }
 
     .nav-link {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        padding: 1rem 20px;
+        display: block;
+        width: 100%;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    .nav-link.active {
+        background-color: var(--section-bg);
     }
 
     .theme-toggle {
         width: 36px;
         height: 36px;
+    }
+
+    /* Show mobile menu toggle on mobile */
+    .mobile-menu-toggle {
+        display: flex;
     }
 
     .projects-grid {

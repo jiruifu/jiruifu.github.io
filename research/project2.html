@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Title 2</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <!-- Theme Toggle - Load early to prevent flash -->
     <script src="../assets/js/theme-toggle.js"></script>
 </head>
@@ -14,7 +16,7 @@
             <div class="nav-container">
                 <a href="../index.html#home" class="nav-name">Jirui "Jerry" Fu</a>
                 <div class="nav-right">
-                    <ul class="nav-menu">
+                    <ul class="nav-menu" id="nav-menu">
                         <li><a href="../index.html#home" class="nav-link">HOME</a></li>
                         <li><a href="../index.html#publications" class="nav-link">PUBLICATIONS</a></li>
                         <li><a href="../index.html#awards" class="nav-link">AWARDS</a></li>
@@ -36,6 +38,9 @@
                         <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
+                    </button>
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                        <div id="menu-animation-container"></div>
                     </button>
                 </div>
             </div>
@@ -86,6 +91,9 @@
             <p>&copy; 2024 Your Name. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/mobile-menu.js"></script>
 </body>
 </html>
 
