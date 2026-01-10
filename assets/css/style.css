@@ -1,3 +1,42 @@
+/* CSS Variables for Theme */
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --text-secondary: #666;
+    --text-tertiary: #888;
+    --border-color: #e0e0e0;
+    --nav-bg: #fff;
+    --nav-border: #e0e0e0;
+    --nav-shadow: rgba(0,0,0,0.05);
+    --heading-color: #2c3e50;
+    --heading-secondary: #34495e;
+    --link-color: #2c5aa0;
+    --link-hover: #1e3d6f;
+    --section-bg: #f8f8f8;
+    --card-bg: #fff;
+    --card-border: #e0e0e0;
+    --card-shadow: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #888;
+    --border-color: #333;
+    --nav-bg: #1f1f1f;
+    --nav-border: #333;
+    --nav-shadow: rgba(0,0,0,0.3);
+    --heading-color: #f0f0f0;
+    --heading-secondary: #d0d0d0;
+    --link-color: #5a9fff;
+    --link-hover: #7bb3ff;
+    --section-bg: #222;
+    --card-bg: #252525;
+    --card-border: #333;
+    --card-shadow: rgba(0,0,0,0.4);
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -6,14 +45,19 @@
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
-body {
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-}
-
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    position: relative; /* Ensure proper stacking context */
+    padding-top: 70px; /* Compensate for fixed navbar height */
 }
 
 .container {
@@ -22,15 +66,26 @@ html {
     padding: 0 20px;
 }
 
-/* Navigation */
-.navbar {
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 1rem 0;
-    position: sticky;
+/* Navigation - Fixed at top when scrolling */
+header {
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background-color: var(--nav-bg);
+    box-shadow: 0 2px 4px var(--nav-shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar {
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    padding: 1rem 0;
+    width: 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin: 0;
 }
 
 .nav-container {
@@ -42,16 +97,22 @@ html {
     align-items: center;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .nav-name {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--heading-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .nav-name:hover {
-    color: #2c5aa0;
+    color: var(--link-color);
 }
 
 .nav-menu {
@@ -65,7 +126,7 @@ html {
 
 .nav-link {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-size: 1.1rem;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -75,7 +136,7 @@ html {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #2c5aa0;
+    color: var(--link-color);
 }
 
 .nav-link.active::after {
@@ -85,7 +146,48 @@ html {
     left: 0;
     right: 0;
     height: 2px;
-    background-color: #2c5aa0;
+    background-color: var(--link-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+}
+
+.theme-toggle:hover {
+    background-color: var(--section-bg);
+    border-color: var(--link-color);
+    transform: scale(1.05);
+}
+
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-icon.moon-icon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon.sun-icon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon.moon-icon {
+    display: block;
 }
 
 /* Hero Section */
@@ -119,59 +221,352 @@ html {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #fff;
+    border: 4px solid var(--bg-color);
+    box-shadow: 0 4px 8px var(--card-shadow);
+    background-color: var(--bg-color);
+    transition: border-color 0.3s ease;
 }
 
 /* Introduction Section */
 .introduction-section {
-    padding: 3rem 0 4rem;
-    background-color: #fff;
+    padding: 2rem 0 2.5rem;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
 }
 
 .introduction-content {
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
-.introduction-content h1 {
+/* Markdown Content Styling */
+.markdown-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.markdown-content h1 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    color: var(--heading-color);
+    font-weight: 400;
+    text-align: left;
+}
+
+.markdown-content.introduction-content h1 {
+    text-align: left;
+    color: var(--link-color);
+    font-weight: 600;
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.markdown-content h2 {
+    font-size: 1.5rem;
+    margin: 1.2rem 0 0.5rem;
+    color: var(--heading-color);
+    font-weight: 600;
+}
+
+.markdown-content h3 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.8rem;
+    color: var(--heading-secondary);
     font-weight: 400;
 }
 
-.introduction-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #444;
-    margin-bottom: 1.5rem;
+.markdown-content h4 {
+    font-size: 1.2rem;
+    margin: 1.2rem 0 0.6rem;
+    color: var(--heading-secondary);
+    font-weight: 400;
 }
 
-.contact-info {
+.markdown-content p {
     font-size: 1rem;
-    color: #666;
-    margin-top: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    text-align: left;
 }
 
-.contact-info a {
+.markdown-content.introduction-content p {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin: 0.3rem 0 0.8rem 2rem;
+    padding-left: 1rem;
+}
+
+.markdown-content li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 0.2rem;
+}
+
+/* Compact spacing for introduction section */
+.markdown-content.introduction-content h2 {
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.markdown-content.introduction-content ul {
+    margin-top: 0.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.markdown-content.introduction-content p {
+    margin-bottom: 0.3rem;
+}
+
+.markdown-content.introduction-content > h1:first-child {
+    margin-bottom: 0.5rem;
+}
+
+.markdown-content.introduction-content > p:first-of-type {
+    margin-bottom: 0.8rem;
+}
+
+/* Social Icons Box Styling */
+.social-icons-box {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    margin-top: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.social-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 0.3rem;
+    border-radius: 4px;
+}
+
+.social-icon-link:hover {
+    color: var(--link-color);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    object-fit: contain;
+}
+
+.social-icon-link:hover .social-icon {
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
+/* Ensure SVG images maintain their aspect ratio and don't stretch */
+.social-icon-link img.social-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Legacy styles for backward compatibility */
+.github-link-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f5f5f5;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+.email-link-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+}
+
+/* Contact section - no bold for Email label */
+.markdown-content.introduction-content h2 + p {
+    margin-top: 0.3rem;
+}
+
+/* Research Interests - inline format with semicolons */
+.markdown-content.introduction-content h2:last-of-type + p {
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* Ensure paragraphs after headings have proper spacing */
+.markdown-content.introduction-content h2 + p,
+.markdown-content.introduction-content h2 ~ p:not(h2 ~ p ~ p) {
+    margin-bottom: 0;
+}
+
+.markdown-content a {
     color: #2c5aa0;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.contact-info a:hover {
+.markdown-content a:hover {
     color: #1e3d6f;
     text-decoration: underline;
+}
+
+/* Override for social icon links - they should not inherit markdown link colors */
+.markdown-content a.social-icon-link,
+.markdown-content a.social-icon-link:visited,
+.markdown-content a.social-icon-link:hover,
+.markdown-content a.social-icon-link:active,
+.markdown-content a.social-icon-link:link {
+    color: var(--text-color) !important;
+    text-decoration: none !important;
+}
+
+.markdown-content a.social-icon-link:hover {
+    color: var(--link-color) !important;
+}
+
+/* Override for buttons - they should not inherit link colors */
+.markdown-content a.github-button,
+.markdown-content a.github-button:visited,
+.markdown-content a.github-button:hover,
+.markdown-content a.github-button:active,
+.markdown-content a.github-button:link {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.markdown-content strong {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.markdown-content em {
+    font-style: italic;
+}
+
+.markdown-content code {
+    background-color: var(--section-bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: var(--link-color);
+}
+
+.markdown-content pre {
+    background-color: var(--section-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.markdown-content pre code {
+    background-color: transparent;
+    padding: 0;
+    color: var(--text-color);
+}
+
+.markdown-content blockquote {
+    border-left: 4px solid var(--link-color);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.markdown-content hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+/* Project Description Styling */
+.project-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.project-description p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.project-description h2,
+.project-description h3,
+.project-description h4 {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
+    color: var(--heading-color);
+}
+
+.project-description ul,
+.project-description ol {
+    margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.project-description li {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Legacy styles for backward compatibility */
+.introduction-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 1.5rem;
+}
+
+.contact-info a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+.error-message {
+    color: var(--link-color);
+    font-style: italic;
+    padding: 1rem;
+    text-align: center;
 }
 
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 300;
 }
 
@@ -189,14 +584,14 @@ html {
 .home-content h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 300;
 }
 
 .home-content .intro-text {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 3rem;
 }
 
@@ -208,38 +603,39 @@ html {
 }
 
 .quick-link-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     padding: 2rem;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .quick-link-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-color: #2c5aa0;
+    box-shadow: 0 8px 16px var(--card-shadow);
+    border-color: var(--link-color);
 }
 
 .quick-link-card h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 400;
 }
 
 .quick-link-card p {
     font-size: 1rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
 /* Research Section */
 .research-section {
     padding: 3rem 0 5rem;
-    background-color: #f8f8f8;
+    background-color: var(--section-bg);
+    transition: background-color 0.3s ease;
 }
 
 /* Projects Grid */
@@ -251,16 +647,16 @@ html {
 }
 
 .project-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px var(--card-shadow);
 }
 
 .project-link {
@@ -273,7 +669,7 @@ html {
     width: 100%;
     height: 250px;
     overflow: hidden;
-    background-color: #f5f5f5;
+    background-color: var(--section-bg);
 }
 
 .project-image img {
@@ -294,13 +690,13 @@ html {
 .project-content h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 400;
 }
 
 .project-content p {
     font-size: 1rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.7;
 }
 
@@ -314,21 +710,21 @@ html {
 .research-detail h1 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 400;
 }
 
 .research-detail .back-link {
     display: inline-block;
     margin-bottom: 2rem;
-    color: #2c5aa0;
+    color: var(--link-color);
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .research-detail .back-link:hover {
-    color: #1e3d6f;
+    color: var(--link-hover);
 }
 
 .research-detail .detail-image {
@@ -337,26 +733,26 @@ html {
     height: auto;
     margin: 2rem 0;
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px var(--card-shadow);
 }
 
 .research-detail .detail-content {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #444;
+    color: var(--text-color);
 }
 
 .research-detail .detail-content h2 {
     font-size: 1.8rem;
     margin: 2rem 0 1rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 400;
 }
 
 .research-detail .detail-content h3 {
     font-size: 1.4rem;
     margin: 1.5rem 0 0.8rem;
-    color: #34495e;
+    color: var(--heading-secondary);
     font-weight: 400;
 }
 
@@ -389,10 +785,10 @@ html {
 .subsection-title {
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 400;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .bibliography-list {
@@ -402,14 +798,14 @@ html {
 
 .loading-message {
     text-align: center;
-    color: #888;
+    color: var(--text-tertiary);
     font-style: italic;
     padding: 2rem 0;
 }
 
 .bibliography-item {
     padding: 1rem 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .bibliography-item:last-child {
@@ -419,24 +815,24 @@ html {
 .bibliography-text {
     font-size: 1rem;
     line-height: 1.8;
-    color: #333;
+    color: var(--text-color);
     margin: 0;
 }
 
 .bibliography-text strong {
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--heading-color);
 }
 
 .bib-link {
-    color: #2c5aa0;
+    color: var(--link-color);
     text-decoration: none;
     margin: 0 0.2rem;
     transition: color 0.3s ease;
 }
 
 .bib-link:hover {
-    color: #1e3d6f;
+    color: var(--link-hover);
     text-decoration: underline;
 }
 
@@ -448,7 +844,7 @@ html {
 
 .publication-item {
     padding: 2rem 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .publication-item:last-child {
@@ -459,8 +855,8 @@ html {
     display: inline-block;
     margin-right: 1rem;
     padding: 0.3rem 0.8rem;
-    background-color: #f0f0f0;
-    color: #2c5aa0;
+    background-color: var(--section-bg);
+    color: var(--link-color);
     text-decoration: none;
     border-radius: 4px;
     font-size: 0.9rem;
@@ -468,13 +864,14 @@ html {
 }
 
 .pub-link:hover {
-    background-color: #e0e0e0;
+    background-color: var(--card-border);
 }
 
 /* Awards Section */
 .awards-section {
     padding: 3rem 0 5rem;
-    background-color: #f8f8f8;
+    background-color: var(--section-bg);
+    transition: background-color 0.3s ease;
 }
 
 .awards-list {
@@ -486,7 +883,7 @@ html {
     display: flex;
     gap: 2rem;
     padding: 2rem 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .award-item:last-child {
@@ -496,7 +893,7 @@ html {
 .award-year {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #2c5aa0;
+    color: var(--link-color);
     min-width: 80px;
     padding-top: 0.2rem;
 }
@@ -508,13 +905,13 @@ html {
 .award-content h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--heading-color);
     font-weight: 400;
 }
 
 .award-organization {
     font-size: 1rem;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
@@ -522,18 +919,19 @@ html {
 .award-description {
     font-size: 1rem;
     line-height: 1.7;
-    color: #444;
+    color: var(--text-color);
     margin-top: 0.5rem;
 }
 
 /* Footer */
 footer {
-    background-color: #f8f8f8;
-    border-top: 1px solid #e0e0e0;
+    background-color: var(--section-bg);
+    border-top: 1px solid var(--border-color);
     padding: 2rem 0;
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     margin-top: 4rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 footer p {
@@ -548,6 +946,12 @@ footer p {
         align-items: flex-start;
     }
 
+    .nav-right {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .nav-name {
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
@@ -557,11 +961,16 @@ footer p {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: flex-start;
-        width: 100%;
+        flex: 1;
     }
 
     .nav-link {
         font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
     }
 
     .projects-grid {
