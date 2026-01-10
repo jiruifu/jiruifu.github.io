@@ -216,11 +216,16 @@ header {
 /* Hero Section */
 .hero-section {
     width: 100%;
-    margin-bottom: 3rem;
+    position: relative;
+    margin-bottom: 50px; /* Space for bottom 25% of photo (200px * 0.25 = 50px) */
+    overflow: visible; /* Allow profile photo to overlap */
+    z-index: 1;
 }
 
 .hero-content {
     width: 100%;
+    position: relative;
+    overflow: visible;
 }
 
 .banner-image {
@@ -228,15 +233,40 @@ header {
     height: auto;
     display: block;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
 }
 
-/* Profile Section */
-.profile-section {
-    padding: 2rem 0;
-    text-align: center;
-    margin-top: -100px;
+/* Profile Section Wrapper - Positioned absolutely to overlap banner by 75% */
+.profile-section-wrapper {
+    position: absolute;
+    bottom: 0; /* Align bottom of wrapper to bottom of hero-content (bottom of banner) */
+    left: 20px; /* Align to left with padding */
+    z-index: 20; /* Higher z-index to appear above banner */
+    width: 200px;
+    height: 200px;
+    transform: translateY(50px); /* Move down by 50px so bottom 25% extends below, top 75% (150px) stays in banner */
+    pointer-events: none; /* Allow clicks to pass through to banner, except on photo */
+}
+
+.profile-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
     position: relative;
-    z-index: 10;
+    pointer-events: auto; /* Re-enable clicks on photo */
+}
+
+/* Legacy profile-section class for compatibility (if used elsewhere) */
+.profile-section {
+    padding: 0;
+    padding-bottom: 2rem;
+    margin-top: 0;
+    position: relative;
+    z-index: 20;
+    margin-bottom: 0;
 }
 
 .profile-photo {
@@ -248,13 +278,18 @@ header {
     box-shadow: 0 4px 8px var(--card-shadow);
     background-color: var(--bg-color);
     transition: border-color 0.3s ease;
+    position: relative;
+    z-index: 21; /* Ensure photo is above banner */
 }
 
 /* Introduction Section */
 .introduction-section {
     padding: 2rem 0 2.5rem;
+    padding-top: 50px; /* Add space for bottom 25% of profile photo (200px * 0.25 = 50px) */
     background-color: var(--bg-color);
     transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 5; /* Below profile photo */
 }
 
 .introduction-content {
@@ -1059,6 +1094,18 @@ footer p {
     .profile-photo {
         width: 150px;
         height: 150px;
+    }
+
+    .hero-section {
+        margin-bottom: 38px; /* Space for bottom 25% of mobile photo (150px * 0.25 = 38px) */
+    }
+
+    .profile-section-wrapper {
+        width: 150px;
+        height: 150px;
+        left: 20px;
+        bottom: 0; /* Align to bottom of banner */
+        transform: translateY(38px); /* Move down by 38px (25% of 150px) so 75% (113px) stays in banner */
     }
 
     .award-item {
