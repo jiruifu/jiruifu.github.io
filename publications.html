@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-name">Jirui "Jerry" Fu</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">HOME</a></li>
+                    <li><a href="research.html" class="nav-link">RESEARCH</a></li>
+                    <li><a href="publications.html" class="nav-link active">PUBLICATIONS</a></li>
+                    <li><a href="awards.html" class="nav-link">AWARDS</a></li>
+                    <li><a href="cv.pdf" class="nav-link" target="_blank">CV</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="publications-section">
+            <div class="container">
+                <h1>Publications</h1>
+                
+                <!-- Peer-reviewed Journal Subsection -->
+                <div class="publication-subsection">
+                    <h2 class="subsection-title">Peer-reviewed Journal</h2>
+                    <div class="publications-list" id="journal-publications">
+                        <!-- Publications will be loaded here from journal.bib -->
+                        <div class="loading-message">Loading publications...</div>
+                    </div>
+                </div>
+
+                <!-- Conference Proceeding Subsection -->
+                <div class="publication-subsection">
+                    <h2 class="subsection-title">Conference Proceeding</h2>
+                    <div class="publications-list" id="conference-publications">
+                        <!-- Publications will be loaded here from conference.bib -->
+                        <div class="loading-message">Loading publications...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/bibtex-parser.js"></script>
+</body>
+</html>
