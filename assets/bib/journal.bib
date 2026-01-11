@@ -1,26 +1,233 @@
-@article{example2024journal1,
-  title={Example Journal Article Title},
-  author={Your Name and Co-Author One and Co-Author Two},
-  journal={Journal of Example Research},
-  volume={42},
-  number={3},
-  pages={123--145},
-  year={2024},
-  doi={10.1000/example123},
-  url={https://example.com/paper1},
-  abstract={This is an example abstract for a journal article. It describes the key contributions and findings of the research work.}
+@ARTICLE{Kim2022-qd,
+  title     = "Hair follicle classification and hair loss severity estimation
+               using Mask {R}-{CNN}",
+  author    = "Kim, Jong-Hwan and Kwon, Segi and Fu, Jirui and Park, Joon-Hyuk",
+  journal   = "J. Imaging",
+  publisher = "MDPI AG",
+  volume    =  8,
+  number    =  10,
+  pages     =  283,
+  abstract  = "Early and accurate detection of scalp hair loss is imperative to
+               provide timely and effective treatment plans to halt further
+               progression and save medical costs. Many techniques have been
+               developed leveraging deep learning to automate the hair loss
+               detection process. However, the accuracy and robustness of
+               assessing hair loss severity still remain a challenge and barrier
+               for transitioning such a technique into practice. The presented
+               work proposes an efficient and accurate algorithm to classify
+               hair follicles and estimate hair loss severity, which was
+               implemented and validated using a multitask deep learning method
+               via a Mask R-CNN framework. A microscopic image of the scalp was
+               resized, augmented, then processed through pre-trained ResNet
+               models for feature extraction. The key features considered in
+               this study concerning hair loss severity include the number of
+               hair follicles, the thickness of the hair, and the number of
+               hairs in each hair follicle. Based on these key features,
+               labeling of hair follicles (healthy, normal, and severe) were
+               performed on the images collected from 10 men in varying stages
+               of hair loss. More specifically, Mask R-CNN was applied for
+               instance segmentation of the hair follicle region and to classify
+               the hair follicle state into three categories, following the
+               labeling convention (healthy, normal and severe). Based on the
+               state of each hair follicle captured from a single image, an
+               estimation of hair loss severity was determined for that
+               particular region of the scalp, namely local hair loss severity
+               index (P), and by combining P of multiple images taken and
+               processed from different parts of the scalp, we constructed the
+               hair loss severity estimation (Pavg) and visualized in a heatmap
+               to illustrate the overall hair loss type and condition. The
+               proposed hair follicle classification and hair loss severity
+               estimation using Mask R-CNN demonstrated a more efficient and
+               accurate algorithm compared to other methods previously used,
+               enhancing the classification accuracy by 4 to 15\%. This
+               performance supports its potential for use in clinical settings
+               to enhance the accuracy and efficiency of current hair loss
+               diagnosis and prognosis techniques.",
+  month     =  "14~" # oct,
+  year      =  2022,
+  keywords  = "Mask R-CNN; and classification; hair follicle detection; hair
+               loss; hair severity estimation; image segmentation;mypaper",
+  doi       = "10.3390/jimaging8100283",
+  language  = "en"
 }
 
-@article{example2023journal2,
-  title={Another Example Journal Publication},
-  author={Your Name and Another Author},
-  journal={International Journal of Examples},
-  volume={15},
-  number={7},
-  pages={456--478},
-  year={2023},
-  doi={10.1000/example456},
-  url={https://example.com/paper2},
-  abstract={This is another example abstract for a journal publication.}
+@ARTICLE{Fu2022-nj,
+  title     = "Myoelectric control systems for upper limb wearable robotic
+               exoskeletons and exosuits-A systematic review",
+  author    = "Fu, Jirui and Choudhury, Renoa and Hosseini, Saba M and Simpson,
+               Rylan and Park, Joon-Hyuk",
+  journal   = "Sensors (Basel)",
+  publisher = "MDPI AG",
+  volume    =  22,
+  number    =  21,
+  pages     =  8134,
+  abstract  = "In recent years, myoelectric control systems have emerged for
+               upper limb wearable robotic exoskeletons to provide movement
+               assistance and/or to restore motor functions in people with motor
+               disabilities and to augment human performance in able-bodied
+               individuals. In myoelectric control, electromyographic (EMG)
+               signals from muscles are utilized to implement control strategies
+               in exoskeletons and exosuits, improving adaptability and
+               human-robot interactions during various motion tasks. This paper
+               reviews the state-of-the-art myoelectric control systems designed
+               for upper-limb wearable robotic exoskeletons and exosuits, and
+               highlights the key focus areas for future research directions.
+               Here, different modalities of existing myoelectric control
+               systems were described in detail, and their advantages and
+               disadvantages were summarized. Furthermore, key design aspects
+               (i.e., supported degrees of freedom, portability, and intended
+               application scenario) and the type of experiments conducted to
+               validate the efficacy of the proposed myoelectric controllers
+               were also discussed. Finally, the challenges and limitations of
+               current myoelectric control systems were analyzed, and future
+               research directions were suggested.",
+  month     =  "24~" # oct,
+  year      =  2022,
+  keywords  = "EMG-based control system; biomechanical model; machine learning;
+               myoelectric control; pattern recognition; reinforcement learning;
+               upper limb exoskeleton; upper limb exosuit; upper limb wearable
+               robot;mypaper",
+  doi       = "10.3390/s22218134",
+  language  = "en"
 }
 
+@ARTICLE{Mohammad-Hosseini2023-xl,
+  title     = "A constrained model predictive controller for two cooperative
+               tripod mobile robots",
+  author    = "Mohammad Hosseini, Saba and Ehyaei, Amir Farhad and Park,
+               Joon-Hyuk and Fu, Jirui and Safari, Amirhossein",
+  journal   = "Trans. Inst. Meas. Control",
+  publisher = "SAGE Publications",
+  volume    =  45,
+  number    =  10,
+  pages     = "1999--2011",
+  abstract  = "A constrained model predictive controller for two tripod mobile
+               robots performing cooperative transportation of an object through
+               a pre-defined trajectory in the presence of external disturbances
+               has been developed and validated in this paper. The robots are
+               designed to hold an object through their end effectors while
+               applying controlled forces to the object and transitioning along
+               the pre-defined reference trajectory. In this collaborative
+               transportation task, a constrained model predictive controller to
+               control the applied forces and a sliding-mode controller to
+               control the motion of the systems are implemented. A load-sharing
+               algorithm allowed for decentralizing the control system to
+               determine the share of the force applied to the object from each
+               end effector. The system and control algorithms are modeled and
+               simulated in a computational environment using MATLAB software.
+               The results showed that the cooperative system’s position
+               tracking and the force control on the object are successfully
+               achieved using the developed algorithms with minimum deviation
+               from the desired trajectory. In addition, robustness to a
+               continuously increasing external disturbance exerted on the
+               system was achieved using the proposed force control strategy.",
+  month     =  jun,
+  year      =  2023,
+  keywords  = "mypaper",
+  doi       = "10.1177/01423312231152645",
+  language  = "en"
+}
+
+@ARTICLE{Kadhim2024-ty,
+  title     = "Resistance training using {VAriable} Resistance Suit ({VARS})
+               increased isometric and isokinetic muscle strength",
+  author    = "Kadhim, Ibrahim F and Banarjee, Chitra and Fu, Jirui and
+               Choudhury, Renoa and Colby Mangum, L and Fukuda, David H and
+               Stout, Jeffrey R and Cramer, Joel T and Park, Joon-Hyuk",
+  journal   = "IEEE Trans. Neural Syst. Rehabil. Eng.",
+  publisher = "Institute of Electrical and Electronics Engineers (IEEE)",
+  volume    =  32,
+  pages     = "2835--2844",
+  abstract  = "While resistance training promotes muscle hypertrophy and
+               strength, accessibility of equipment is a barrier. This study
+               evaluated a wearable VAriable Resistance Suit (VARS) as a novel
+               and alternative method to achieve muscle strength improvement. It
+               was hypothesized that by providing adjustable, bi-directional and
+               speed dependent resistance, VARS can target specific muscles to
+               improve muscle strength via an accessible and portable device.
+               Twelve untrained healthy male adults (22.08 ± 4.1 years old)
+               participated in an 8-week long resistance training using VARS to
+               strengthen four muscles (biceps brachii, triceps brachii, biceps
+               femoris, rectus femoris) of their non-dominant arm and leg using
+               VARS. The results showed significant improvements in the muscle
+               strength measured by isokinetic dynamometer - 49.9±9.6\% increase
+               in isokinetic force and 30.6±7.6\% increase in isometric force.
+               Muscle size and body composition were also assessed using
+               ultrasound imaging and bioelectrical impedance analysis, which
+               did not show significant changes. The study demonstrates the
+               efficacy and feasibility of VARS as a resistance training tool to
+               achieve muscle strength improvement and its potential extension
+               to clinical populations.",
+  month     =  "8~" # aug,
+  year      =  2024,
+  keywords  = "mypaper",
+  doi       = "10.1109/TNSRE.2024.3435798",
+  language  = "en"
+}
+
+@ARTICLE{Currier2024-em,
+  title    = "Myoelectric Hand Gesture Recognition using Variational Autoencoder
+              and Sensor Fusion",
+  author   = "Currier, Keith and Fu, Jirui and Bayat, Nasrin and Fu, Yanjie and
+              Kim, Jong-Hwan and Park, Joon-Hyuk",
+  abstract = "Pattern recognition-based myoelectric control schemes aim to
+              classify surface electromyographic (sEMG) signals generated by
+              skeletal muscles for use in prosthetics or wearable robots. Many
+              factors impact the EMG signal quality and reliability, such as
+              motion artifacts, electrode shift, and reduced conductivity over
+              time, which calls for robust pattern recognition-based myoelectric
+              control schemes. The manifold hypothesis–a breakdown of
+              high-dimensional space to a lower-dimensional representation to
+              explain how the higher-dimensional space operates–provides a
+              framework to discover the representation or manifold of multimodal
+              biological signals. This paper presents a pattern
+              recognition-based myoelectric control scheme that creates
+              compressed latent space representations using a contrastive
+              variational autoencoder (VAE) with an integrated classifier. The
+              VAE model was designed, trained with a secondary …",
+  month    =  "21~" # jun,
+  year     =  2024,
+  keywords = "mypaper"
+}
+
+@ARTICLE{Park2024-xt,
+  title     = "Youth athletes and wearable technology",
+  author    = "Park, Joon-Hyuk and Banarjee, Chitra and Fu, Jirui and
+               White-Williams, Cynthia and Coel, Rachel and Zaslow, Tracy and
+               Benjamin, Holly and Silva, Florianne and Vomer, Rock and Pujalte,
+               George",
+  journal   = "F1000Res.",
+  publisher = "F1000 Research Ltd",
+  volume    =  13,
+  number    =  1381,
+  pages     =  1381,
+  abstract  = "Wearable sensors have become integral tools for monitoring
+               biomechanical and physiologic aspects of athletic training and
+               performance. A prominent trend in fitness technology, wearable
+               devices now measure a variety of health characteristics,
+               including movement and posture, physiologic measures (eg, heart
+               rate and energy expenditure), and fluid and electrolyte losses,
+               to understand an athlete’s physiologic responses during activity.
+               Sleep has proven integral to athletic performance, and sleep
+               monitoring wearable devices (eg, watches, rings, and headbands)
+               use various measures, such as actigraphy and pulse oximetry, to
+               analyze sleep quality. Young athletes benefit from wearable
+               devices during training sessions, where multimodal data are
+               collected and analyzed to assess performance. Wearable devices
+               are also useful for resistance training, biofeedback, and
+               electrical muscle stimulation, providing athletes with tools to
+               optimize their training regimens. Moreover, these devices play a
+               crucial role in athlete safety by monitoring cardiac physiology,
+               head impacts, and muscle rehabilitation after injury. We provide
+               a comprehensive review of current wearable technology and its
+               application in youth athletics, describe where and how these
+               sensors are used to help enhance physiologic, biomechanical, and
+               performance parameters, and discuss future directions for
+               wearable devices to advance sports science and athlete
+               management.",
+  month     =  "18~" # nov,
+  year      =  2024,
+  keywords  = "mypaper",
+  doi       = "10.12688/f1000research.156207.1",
+  language  = "en"
+}

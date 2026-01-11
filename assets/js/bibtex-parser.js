@@ -256,6 +256,17 @@ async function loadBibTeX(filePath) {
 }
 
 /**
+ * Escape HTML special characters
+ * @param {string} text - Text to escape
+ * @returns {string} Escaped text
+ */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+/**
  * Render publications to the DOM as plain bibliography
  * @param {Array} publications - Array of formatted publication objects
  * @param {string} containerId - ID of the container element
@@ -296,31 +307,27 @@ function renderPublications(publications, containerId) {
         }
         
         // Format as plain bibliography: Authors. Title. Venue. [Links]
-        let bibText = '';
-        bibText += `${pub.authors}. `;
-        bibText += `${pub.title}. `;
+        // Build HTML string since authors contain HTML (bold tags)
+        let bibHTML = '';
+        bibHTML += `${pub.authors}. `;
+        bibHTML += `${escapeHtml(pub.title)}. `;
         if (pub.venue) {
-            bibText += `${pub.venue}`;
+            bibHTML += `${escapeHtml(pub.venue)}`;
             if (!pub.venue.endsWith('.')) {
-                bibText += '.';
+                bibHTML += '.';
             }
-            bibText += ' ';
+            bibHTML += ' ';
         }
         
-        // Create the paragraph element with text content first, then add links
-        const textNode = document.createTextNode(bibText);
+        // Add links
+        if (linksHTML) {
+            bibHTML += linksHTML;
+        }
+        
+        // Create the paragraph element with HTML content
         const para = document.createElement('p');
         para.className = 'bibliography-text';
-        para.appendChild(textNode);
-        
-        // Add links after the text
-        if (linksHTML) {
-            const tempDiv = document.createElement('span');
-            tempDiv.innerHTML = linksHTML;
-            while (tempDiv.firstChild) {
-                para.appendChild(tempDiv.firstChild);
-            }
-        }
+        para.innerHTML = bibHTML;
         
         pubElement.appendChild(para);
         container.appendChild(pubElement);
