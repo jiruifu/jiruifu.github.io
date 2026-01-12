@@ -7,16 +7,16 @@
     <a href="https://github.com/jiruifu" class="social-icon-link" target="_blank" title="GitHub">
         <img src="assets/img/icons/github.svg" alt="GitHub" class="social-icon">
     </a>
-    <a href="https://scholar.google.com/citations?user=YOUR_ID" class="social-icon-link" target="_blank" title="Google Scholar">
+    <a href="https://scholar.google.com/citations?user=NUqwYgIAAAAJ&hl=en" class="social-icon-link" target="_blank" title="Google Scholar">
         <img src="assets/img/icons/googlescholar.svg" alt="Google Scholar" class="social-icon">
     </a>
-    <a href="https://orcid.org/0000-0000-0000-0000" class="social-icon-link" target="_blank" title="ORCID">
+    <a href="https://orcid.org/0000-0002-3552-9284" class="social-icon-link" target="_blank" title="ORCID">
         <img src="assets/img/icons/ORCID_iD.svg" alt="ORCID" class="social-icon">
     </a>
-    <a href="https://www.researchgate.net/profile/YOUR_PROFILE" class="social-icon-link" target="_blank" title="ResearchGate">
+    <a href="https://www.researchgate.net/profile/Jirui_Fu2" class="social-icon-link" target="_blank" title="ResearchGate">
         <img src="assets/img/icons/researchgate.svg" alt="ResearchGate" class="social-icon">
     </a>
-    <a href="https://www.linkedin.com/in/yourprofile" class="social-icon-link" target="_blank" title="LinkedIn">
+    <a href="https://www.linkedin.com/in/jirui-fu" class="social-icon-link" target="_blank" title="LinkedIn">
         <img src="assets/img/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
     </a>
 </div>
