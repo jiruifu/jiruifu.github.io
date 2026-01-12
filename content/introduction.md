@@ -21,7 +21,7 @@
     </a>
 </div>
 
-I am a post-doctoral scholar mentored by Dr. Helen J. Huang, and Dr. Yue Wen.
+Hi, I am Jerry. I am a post-doctoral scholar mentored by Dr. Helen J. Huang, and Dr. Yue Wen.
 
 ## Contact
 
