@@ -24,7 +24,7 @@
                         <li><a href="#publications" class="nav-link">PUBLICATIONS</a></li>
                         <li><a href="#awards" class="nav-link">AWARDS</a></li>
                         <li><a href="#research" class="nav-link">RESEARCH</a></li>
-                        <li><a href="cv.pdf" class="nav-link" target="_blank">CV</a></li>
+                        <li><a href="cv.html" class="nav-link">CV</a></li>
                     </ul>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                         <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -51,25 +51,77 @@
     </header>
 
     <main>
-        <!-- Hero Section with Profile Photo -->
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <img src="assets/img/banner.jpg" alt="Banner" class="banner-image">
-                <!-- Profile Photo positioned absolutely to overlap banner -->
-                <div class="profile-section-wrapper">
-                    <div class="profile-content">
-                        <img src="assets/img/photo.jpg" alt="Jirui Fu" class="profile-photo">
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- About Section: profile sidebar + About column -->
+        <section id="home" class="about-section">
+            <div class="container about-container">
+                <aside class="about-sidebar">
+                    <img src="assets/img/photo.jpg" alt="Jirui Fu" class="profile-photo">
+                    <h1 class="about-name">Jirui "Jerry" Fu</h1>
+                    <p class="about-role">Post-doctoral Scholar</p>
 
-        <!-- Introduction Section -->
-        <section class="introduction-section">
-            <div class="container">
-                <div class="introduction-content markdown-content" id="introduction-content">
-                    <!-- Introduction will be loaded here from content/introduction.md -->
-                    <div class="loading-message">Loading introduction...</div>
+                    <div class="social-icons-box">
+                        <a href="mailto:jirui.fu@ucf.edu" class="social-icon-link" title="Email">
+                            <img src="assets/img/icons/email.svg" alt="Email" class="social-icon">
+                        </a>
+                        <a href="https://github.com/jiruifu" class="social-icon-link" target="_blank" title="GitHub">
+                            <img src="assets/img/icons/github.svg" alt="GitHub" class="social-icon">
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=NUqwYgIAAAAJ&hl=en" class="social-icon-link" target="_blank" title="Google Scholar">
+                            <img src="assets/img/icons/googlescholar.svg" alt="Google Scholar" class="social-icon">
+                        </a>
+                        <a href="https://orcid.org/0000-0002-3552-9284" class="social-icon-link" target="_blank" title="ORCID">
+                            <img src="assets/img/icons/ORCID_iD.svg" alt="ORCID" class="social-icon">
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Jirui_Fu2" class="social-icon-link" target="_blank" title="ResearchGate">
+                            <img src="assets/img/icons/researchgate.svg" alt="ResearchGate" class="social-icon">
+                        </a>
+                        <a href="https://www.linkedin.com/in/jirui-fu" class="social-icon-link" target="_blank" title="LinkedIn">
+                            <img src="assets/img/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                        </a>
+                    </div>
+
+                    <div class="about-block about-position">
+                        <h2>Current Position</h2>
+                        <p>
+                            <strong>Post-doctoral Scholar</strong> (Oct 2024 – Present)<br>
+                            Mentored by Dr. Helen J. Huang and Dr. Yue Wen<br>
+                            Biomechanics, Rehabilitation, and Interdisciplinary Neuroscience Laboratory<br>
+                            Intelligent Neural Interface and Wearable Robotics Laboratory<br>
+                            University of Central Florida, Orlando, FL
+                        </p>
+                    </div>
+
+                    <div class="about-block about-education">
+                        <h2>Education</h2>
+                        <ul>
+                            <li><strong>Ph.D.,</strong> Mechanical Engineering, University of Central Florida, 2020 - 2024</li>
+                            <li><strong>M.S.,</strong> Mechanical Engineering, University of Southern California, 2018 - 2019</li>
+                            <li><strong>B.S.,</strong> Mechanical Engineering (Magna Cum Laude), Florida Institute of Technology, 2015 - 2017</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-block about-contact">
+                        <h2>Contact</h2>
+                        <p>Email: <a href="mailto:jirui.fu@ucf.edu">jirui.fu@ucf.edu</a></p>
+                    </div>
+                </aside>
+
+                <div class="about-main">
+                    <h2 class="about-heading">About</h2>
+                    <div class="introduction-content markdown-content" id="introduction-content">
+                        <!-- Biography loaded here from content/introduction.md -->
+                        <div class="loading-message">Loading introduction...</div>
+                    </div>
+
+                    <div class="about-interests-section">
+                        <h2 class="about-heading">Research Interests</h2>
+                        <ul class="interest-tags">
+                            <li>Wearable Robotics</li>
+                            <li>Neural Machine Interface</li>
+                            <li>Myoelectric Control</li>
+                            <li>Mobile Brain/body Imaging</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -105,38 +157,44 @@
                 <h1 class="section-title">Awards</h1>
                 
                 <div class="awards-list">
-                    <!-- Award 1 -->
-                    <div class="award-item">
-                        <div class="award-year">2024</div>
-                        <div class="award-content">
-                            <h2>Award Name 1</h2>
-                            <p class="award-organization">Organization/Institution Name</p>
-                            <p class="award-description">
-                                Description of the award and what it recognizes. Explain the significance and context of this recognition.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Award 2 -->
-                    <div class="award-item">
-                        <div class="award-year">2023</div>
-                        <div class="award-content">
-                            <h2>Award Name 2</h2>
-                            <p class="award-organization">Organization/Institution Name</p>
-                            <p class="award-description">
-                                Description of the award and what it recognizes. Explain the significance and context of this recognition.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Award 3 -->
+                    <!-- Honor and Award -->
                     <div class="award-item">
                         <div class="award-year">2022</div>
                         <div class="award-content">
-                            <h2>Award Name 3</h2>
-                            <p class="award-organization">Organization/Institution Name</p>
+                            <h2>Best Student Paper Award</h2>
                             <p class="award-description">
-                                Description of the award and what it recognizes. Explain the significance and context of this recognition.
+                                Awarded at the 2022 IEEE International Conference on Mechatronics and Automation (ICMA) in Guilin, Guangxi, China, for the paper &ldquo;A Bilateral Six-Degree-of-Freedom Cable-Driven Upper Body Exosuit.&rdquo;
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Fellowship and Grant -->
+                    <div class="award-item">
+                        <div class="award-year">2024</div>
+                        <div class="award-content">
+                            <h2>Graduate Dean's Dissertation Completion Fellowship</h2>
+                            <p class="award-description">
+                                Offered by the College of Engineering and Computer Science, University of Central Florida.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-year">2023</div>
+                        <div class="award-content">
+                            <h2>Student Travel Grant</h2>
+                            <p class="award-description">
+                                Offered by the Institute of Electrical and Electronics Engineers (IEEE).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="award-item">
+                        <div class="award-year">2023</div>
+                        <div class="award-content">
+                            <h2>Graduate Student Travel Fellowship</h2>
+                            <p class="award-description">
+                                Offered by the College of Graduate Study, University of Central Florida.
                             </p>
                         </div>
                     </div>

@@ -213,50 +213,151 @@ header {
     display: block;
 }
 
-/* Hero Section */
-.hero-section {
-    width: 100%;
-    position: relative;
-    margin-bottom: 50px; /* Space for bottom 25% of photo (200px * 0.25 = 50px) */
-    overflow: visible; /* Allow profile photo to overlap */
-    z-index: 1;
+/* About Section (home): profile sidebar + About column */
+.about-section {
+    padding: 3rem 0 4rem;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
 }
 
-.hero-content {
-    width: 100%;
-    position: relative;
-    overflow: visible;
-}
-
-.banner-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    position: relative;
-    z-index: 1;
-}
-
-/* Profile Section Wrapper - Positioned absolutely to overlap banner by 75% */
-.profile-section-wrapper {
-    position: absolute;
-    bottom: 0; /* Align bottom of wrapper to bottom of hero-content (bottom of banner) */
-    left: 20px; /* Align to left with padding */
-    z-index: 20; /* Higher z-index to appear above banner */
-    width: 200px;
-    height: 200px;
-    transform: translateY(50px); /* Move down by 50px so bottom 25% extends below, top 75% (150px) stays in banner */
-    pointer-events: none; /* Allow clicks to pass through to banner, except on photo */
-}
-
-.profile-content {
+.about-container {
     display: flex;
-    justify-content: flex-start;
+    gap: 3rem;
     align-items: flex-start;
+}
+
+.about-sidebar {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-sidebar .profile-photo {
+    margin-bottom: 1rem;
+}
+
+.about-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--link-color);
+    margin-bottom: 0.3rem;
+}
+
+.about-role {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.about-sidebar .social-icons-box {
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+
+.about-block {
     width: 100%;
-    height: 100%;
-    position: relative;
-    pointer-events: auto; /* Re-enable clicks on photo */
+    text-align: left;
+    margin-bottom: 1.4rem;
+}
+
+.about-block h2 {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-block ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.about-block li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.about-block p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.about-contact a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.about-contact a:hover {
+    text-decoration: underline;
+}
+
+.about-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-heading {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    font-weight: 400;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.about-main .markdown-content {
+    max-width: none;
+    margin: 0;
+}
+
+/* Larger, airier typography for the About biography */
+.about-main .markdown-content.introduction-content p {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 1.8rem;
+}
+
+.about-main .markdown-content.introduction-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Research Interests presented as pill/tag chips in the About column */
+.about-interests-section {
+    margin-top: 2.75rem;
+}
+
+.about-interests-section .about-heading {
+    font-size: 1.5rem;
+    border-bottom-width: 1px;
+}
+
+.interest-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin: 0;
+    padding: 0;
+}
+
+.interest-tags li {
+    font-size: 1.05rem;
+    line-height: 1.2;
+    color: var(--link-color);
+    background-color: var(--section-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
+    padding: 0.55rem 1.25rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Legacy profile-section class for compatibility (if used elsewhere) */
@@ -278,20 +379,9 @@ header {
     box-shadow: 0 4px 8px var(--card-shadow);
     background-color: var(--bg-color);
     transition: border-color 0.3s ease;
-    position: relative;
-    z-index: 21; /* Ensure photo is above banner */
 }
 
-/* Introduction Section */
-.introduction-section {
-    padding: 2rem 0 2.5rem;
-    padding-top: 50px; /* Add space for bottom 25% of profile photo (200px * 0.25 = 50px) */
-    background-color: var(--bg-color);
-    transition: background-color 0.3s ease;
-    position: relative;
-    z-index: 5; /* Below profile photo */
-}
-
+/* Introduction Content (biography in About column) */
 .introduction-content {
     max-width: 800px;
     margin: 0 auto;
@@ -996,6 +1086,198 @@ footer p {
     font-size: 0.9rem;
 }
 
+/* ===================== CV Page ===================== */
+.cv-section {
+    padding: 2.5rem 0 4rem;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+.cv-container {
+    max-width: 960px;
+}
+
+.cv-header {
+    text-align: center;
+    margin-bottom: 2.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.cv-name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+}
+
+.cv-contact {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.cv-contact a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.cv-contact a:hover {
+    text-decoration: underline;
+}
+
+.cv-contact .sep {
+    margin: 0 0.6rem;
+    color: var(--text-tertiary);
+}
+
+.cv-block {
+    margin-bottom: 2.5rem;
+}
+
+.cv-block-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.cv-subtitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--heading-secondary);
+    margin: 1.5rem 0 0.85rem;
+}
+
+/* Dated entries: date column + body */
+.cv-entry {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cv-entry:last-child {
+    margin-bottom: 0;
+}
+
+.cv-date {
+    flex: 0 0 155px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding-top: 0.1rem;
+}
+
+.cv-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.cv-body p {
+    margin: 0 0 0.35rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.cv-role {
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.cv-body ul,
+.cv-list {
+    margin: 0.45rem 0 0 1.2rem;
+    padding: 0;
+}
+
+.cv-body li,
+.cv-list > li {
+    margin-bottom: 0.35rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.cv-list ul {
+    margin: 0.35rem 0 0.5rem 1.2rem;
+    padding: 0;
+}
+
+.cv-list ul li {
+    margin-bottom: 0.25rem;
+    line-height: 1.55;
+    color: var(--text-color);
+}
+
+/* Publications */
+.cv-pub-list {
+    margin: 0 0 0 1.4rem;
+    padding: 0;
+}
+
+.cv-pub-list li {
+    margin-bottom: 0.8rem;
+    line-height: 1.55;
+    color: var(--text-color);
+}
+
+.cv-pub-list .title {
+    font-style: italic;
+}
+
+.cv-pub-list .venue {
+    color: var(--text-secondary);
+}
+
+.cv-award-flag {
+    font-weight: 600;
+    color: var(--link-color);
+}
+
+/* Skills */
+.cv-skills p {
+    margin-bottom: 0.65rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.cv-skills strong {
+    color: var(--heading-color);
+}
+
+/* Download button */
+.cv-download {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+    text-align: center;
+}
+
+.cv-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background-color: var(--link-color);
+    color: var(--bg-color);
+    padding: 0.85rem 1.7rem;
+    border: 1px solid var(--link-color);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cv-download-btn:hover {
+    background-color: var(--link-hover);
+    border-color: var(--link-hover);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
@@ -1096,16 +1378,30 @@ footer p {
         height: 150px;
     }
 
-    .hero-section {
-        margin-bottom: 38px; /* Space for bottom 25% of mobile photo (150px * 0.25 = 38px) */
+    /* Stack the About sidebar above the About column */
+    .about-container {
+        flex-direction: column;
+        gap: 2rem;
     }
 
-    .profile-section-wrapper {
-        width: 150px;
-        height: 150px;
-        left: 20px;
-        bottom: 0; /* Align to bottom of banner */
-        transform: translateY(38px); /* Move down by 38px (25% of 150px) so 75% (113px) stays in banner */
+    .about-sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    /* CV page: stack the date above each entry body */
+    .cv-name {
+        font-size: 1.9rem;
+    }
+
+    .cv-entry {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 1.35rem;
+    }
+
+    .cv-date {
+        flex-basis: auto;
     }
 
     .award-item {

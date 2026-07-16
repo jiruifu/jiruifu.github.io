@@ -58,7 +58,7 @@ class BibTeXParser {
         let pos = 0;
         while (pos < content.length) {
             // Find field name
-            const nameMatch = content.substring(pos).match(/^\s*(\w+)\s*=\s*/);
+            const nameMatch = content.substring(pos).match(/^\s*([\w-]+)\s*=\s*/);
             if (!nameMatch) break;
             
             const fieldName = nameMatch[1].trim().toLowerCase();
@@ -149,7 +149,10 @@ class BibTeXParser {
         text = text.replace(/\\textbf\{([^}]+)\}/gi, '$1');
         text = text.replace(/\\textit\{([^}]+)\}/gi, '$1');
         text = text.replace(/\\emph\{([^}]+)\}/gi, '$1');
-        
+
+        // Strip any remaining (protective) braces, e.g. {R}-{CNN} or {3D}
+        text = text.replace(/[{}]/g, '');
+
         return text.trim();
     }
 
@@ -163,11 +166,10 @@ class BibTeXParser {
         
         // Split by 'and'
         const authorList = authors.split(/\s+and\s+/i).map(a => a.trim());
-        
-        // Bold the first author (assuming it's you)
-        // You can customize this logic
-        return authorList.map((author, index) => {
-            if (index === 0) {
+
+        // Bold Jirui Fu wherever the name appears (first author or coauthor)
+        return authorList.map((author) => {
+            if (/^fu,\s*jirui/i.test(author)) {
                 return `<strong>${author}</strong>`;
             }
             return author;
@@ -187,6 +189,10 @@ class BibTeXParser {
         
         // Format authors
         const authors = this.formatAuthors(fields.author);
+
+        // Determine whether Jirui Fu is the first author
+        const firstAuthor = (fields.author || '').split(/\s+and\s+/i)[0].trim();
+        const isFirstAuthor = /^fu,\s*jirui/i.test(firstAuthor);
         
         // Format venue for bibliography style: Journal Name, Year
         let venue = '';
@@ -227,7 +233,8 @@ class BibTeXParser {
             links: links,
             abstract: abstract,
             type: entry.type,
-            key: entry.key
+            key: entry.key,
+            isFirstAuthor: isFirstAuthor
         };
     }
 }
@@ -278,8 +285,11 @@ function renderPublications(publications, containerId) {
         return;
     }
     
-    // Sort by year (newest first)
+    // Sort: first-author publications first, then coauthored; newest first within each group
     publications.sort((a, b) => {
+        if (a.isFirstAuthor !== b.isFirstAuthor) {
+            return a.isFirstAuthor ? -1 : 1;
+        }
         const yearA = parseInt(a.year) || 0;
         const yearB = parseInt(b.year) || 0;
         return yearB - yearA;
@@ -302,8 +312,10 @@ function renderPublications(publications, containerId) {
         if (pub.links.slides) {
             linksHTML += `<a href="${pub.links.slides}" class="bib-link" target="_blank">[Slides]</a>`;
         }
-        if (pub.links.doi) {
-            linksHTML += `<a href="${pub.links.doi}" class="bib-link" target="_blank">[DOI]</a>`;
+        // Google Scholar search link (by paper title) for every publication
+        if (pub.title) {
+            const scholarUrl = `https://scholar.google.com/scholar?q=${encodeURIComponent(pub.title)}`;
+            linksHTML += `<a href="${scholarUrl}" class="bib-link" target="_blank">[Google Scholar]</a>`;
         }
         
         // Format as plain bibliography: Authors. Title. Venue. [Links]

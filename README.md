@@ -4,14 +4,14 @@ A clean, modern static website to showcase your research projects and CV, simila
 
 ## Features
 
-- **Home Page**: Welcome page with banner, profile photo, and quick links to main sections
+- **Home Page**: Welcome page with a profile sidebar (photo, bio, interests, education) and quick links to main sections
 - **Research Page**: Display of your research projects with images and brief descriptions
 - **Project Detail Pages**: Click on any project to view detailed information
 - **Publications Page**: List of your academic publications and papers
 - **Awards Page**: Showcase of your honors and recognitions
 - **CV Link**: Direct link to your CV PDF that opens in a new tab
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **Clean Navigation**: Banner with "HOME", "RESEARCH", "PUBLICATIONS", "AWARDS", and "CV" links
+- **Clean Navigation**: Navigation bar with "HOME", "RESEARCH", "PUBLICATIONS", "AWARDS", and "CV" links
 
 ## Setup Instructions
 
@@ -19,9 +19,6 @@ A clean, modern static website to showcase your research projects and CV, simila
 
 Place your images in the following locations:
 
-- **Banner Image**: `assets/img/banner.jpg`
-  - This will be displayed at the top of the homepage
-  
 - **Your Photo**: `assets/img/photo.jpg`
   - This will be displayed as a circular profile image
   - Recommended size: 400x400px or square aspect ratio
@@ -156,7 +153,6 @@ To remove a project, simply delete the project card from `index.html` and the co
 │   │   ├── journal.bib     # Journal publications (BibTeX format)
 │   │   └── conference.bib   # Conference publications (BibTeX format)
 │   └── img/
-│       ├── banner.jpg      # Add your banner image
 │       ├── photo.jpg       # Add your photo
 │       └── projects/
 │           ├── project1.jpg  # Add your project images
