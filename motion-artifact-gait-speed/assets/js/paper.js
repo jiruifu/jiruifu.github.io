@@ -374,49 +374,162 @@
         render();
     })();
 
-    /* ------------------------------------------------------------ CNN widget */
-    (function cnnWidget() {
-        var host = $('#cnn-widget');
+    /* --------------------------------------------------- animated CNN diagram */
+    (function cnnAnim() {
+        var host = $('#cnn-anim');
         if (!host) return;
-        var conv = '3 × [Conv1D (kernel 21, “same” padding) → batch norm → ReLU]';
-        var NODES = [
-            { n: 'Input', ch: 120, div: 1, d: 'One window of 120-channel EEG, <i>W</i> samples long (one stride at the participant’s slowest speed, sampled at 500 Hz).' },
-            { n: 'Block 1', ch: 16, div: 2, p: 51216, d: conv + ', then max-pooling (÷2) and dropout (<i>p</i> = 0.4).' },
-            { n: 'Block 2', ch: 32, div: 4, p: 54048, d: conv + ', then max-pooling (÷2) and dropout (<i>p</i> = 0.4).' },
-            { n: 'Block 3', ch: 64, div: 8, p: 215616, d: conv + ', then max-pooling (÷2) and dropout (<i>p</i> = 0.4).' },
-            { n: 'Block 4', ch: 128, div: 16, p: 861312, d: conv + ', then max-pooling (÷2) and dropout (<i>p</i> = 0.4).' },
-            { n: 'Block 5', ch: 256, div: 16, p: 3442944, d: conv + ', then dropout (<i>p</i> = 0.4). No pooling in this block.' },
-            { n: 'Avg pool', ch: 256, div: 0, d: 'Adaptive average pooling takes the mean over time, leaving one value per filter — so no trainable parameter depends on the window length.' },
-            { n: 'Dense', ch: 64, div: 0, p: 16448, d: 'Hidden dense layer with 64 units and ReLU.' },
-            { n: 'Output', ch: 4, div: 0, p: 130, d: 'Logits for the four gait-speed classes (0.25, 0.5, 0.75, 1.0 m/s), trained with cross-entropy loss.' }
+        var conv = 'Three convolution layers (kernel 21, “same” padding), each followed by batch norm and ReLU';
+        var ST = [
+            { n: 'EEG window', x: 14, w: 112, h: 130, ch: 120, div: 1, d: 'One window of 120-channel EEG, <i>W</i> samples long: one stride at the participant’s slowest speed, sampled at 500 Hz. The window slides forward by <i>S</i> = 5 samples (10 ms).' },
+            { n: 'Block 1', x: 156, w: 64, h: 44, ch: 16, div: 2, p: 51216, blk: 1, d: conv + ', then max-pooling halves the time axis and dropout (<i>p</i> = 0.4) is applied.' },
+            { n: 'Block 2', x: 250, w: 46, h: 62, ch: 32, div: 4, p: 54048, blk: 2, d: conv + ', then max-pooling halves the time axis and dropout (<i>p</i> = 0.4) is applied.' },
+            { n: 'Block 3', x: 334, w: 32, h: 82, ch: 64, div: 8, p: 215616, blk: 3, d: conv + ', then max-pooling halves the time axis and dropout (<i>p</i> = 0.4) is applied.' },
+            { n: 'Block 4', x: 412, w: 22, h: 104, ch: 128, div: 16, p: 861312, blk: 4, d: conv + ', then max-pooling halves the time axis and dropout (<i>p</i> = 0.4) is applied.' },
+            { n: 'Block 5', x: 490, w: 22, h: 130, ch: 256, div: 16, p: 3442944, blk: 5, d: conv + ', then dropout (<i>p</i> = 0.4). There is no pooling in this block.' },
+            { n: 'Avg pool', x: 566, w: 10, h: 130, ch: 256, div: 0, cls: 1, d: 'Global adaptive average pooling takes the mean over time, leaving one value per filter. Because of this, no trainable parameter depends on the window length.' },
+            { n: 'Dense', x: 632, w: 10, h: 56, ch: 64, div: 0, p: 16448, cls: 1, d: 'Hidden dense layer with 64 units and ReLU.' },
+            { n: 'Gait speed', x: 690, w: 156, h: 130, ch: 4, div: 0, p: 130, cls: 1, d: 'Output layer: one logit per gait-speed class, trained with cross-entropy loss. The bars are an illustrative example, not model output.' }
         ];
-        var sel = 1;
-        host.innerHTML = '<h5>Follow a window through the network</h5>' +
-            '<p class="hint">The window length differs between participants because it equals each person’s stride time at 0.25 m/s. Drag the slider (illustrative values) to see how the feature-map shape changes while the parameter count stays at 4,641,714.</p>' +
-            '<div class="w-controls"><label>Stride time <input type="range" id="cnn-t" min="1" max="3" step="0.02" value="1.8"> <output id="cnn-o"></output></label></div>' +
-            '<div class="cnn-flow"></div><div class="cnn-detail" aria-live="polite"></div>';
-        var flow = $('.cnn-flow', host), slider = $('#cnn-t');
-        NODES.forEach(function (nd, i) {
-            var b = el('button', { type: 'button', 'class': 'cnn-node', 'aria-pressed': 'false' }, '<b>' + nd.n + '</b><span class="shape"></span><span class="bar"></span>');
-            b.addEventListener('click', function () { sel = i; render(); });
-            flow.appendChild(b);
+        var CY = 150, N = ST.length, UNIT = 2100;
+        var PROBS = [[0.86, 0.10, 0.03, 0.01], [0.08, 0.81, 0.09, 0.02], [0.02, 0.09, 0.84, 0.05], [0.01, 0.02, 0.09, 0.88]];
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        host.innerHTML =
+            '<div class="w-controls"><div class="chips"><button type="button" id="cnn-play"></button>' +
+            '<button type="button" id="cnn-prev" aria-label="Previous stage">◀</button><button type="button" id="cnn-next" aria-label="Next stage">▶</button></div>' +
+            '<label>Stride time <input type="range" id="cnn-t" min="1" max="3" step="0.02" value="1.8"> <output id="cnn-o"></output></label></div>' +
+            '<div class="cnn-scroll"><div class="viz cnn-viz"></div></div>' +
+            '<div class="cnn-chain" aria-hidden="true">' +
+            ['Conv 1 → BN → ReLU', 'Conv 2 → BN → ReLU', 'Conv 3 → BN → ReLU', 'Max-pool ÷2', 'Dropout 0.4'].map(function (t) { return '<span>' + t + '</span>'; }).join('<i>→</i>') + '</div>' +
+            '<div class="cnn-detail" aria-live="polite"></div>';
+        var s = svg('svg', { viewBox: '0 0 860 252', role: 'img', 'aria-label': 'Animated diagram of the 1D-CNN: an EEG window passes through five convolution blocks, global average pooling and two dense layers to give one of four gait speeds.' }, $('.cnn-viz', host));
+        var slider = $('#cnn-t'), chain = $$('.cnn-chain span', host);
+
+        // connectors + travelling dots
+        var links = [];
+        for (var i = 1; i < N; i++) {
+            var x1 = ST[i - 1].x + ST[i - 1].w + 5, x2 = ST[i].x - 7;
+            svg('line', { 'class': 'cnn-link', x1: x1, x2: x2, y1: CY, y2: CY }, s);
+            svg('path', { 'class': 'cnn-arrow', d: 'M' + (x2 + 4) + ' ' + CY + 'l-7 -4v8z' }, s);
+            var dots = [0, 1, 2].map(function () { return svg('circle', { 'class': 'cnn-dot', r: 3.2, cy: CY, cx: x1, opacity: 0 }, s); });
+            links.push({ x1: x1, x2: x2, dots: dots });
+        }
+        // stages
+        var G = ST.map(function (st, i) {
+            var g = svg('g', { 'class': 'cnn-stage' + (st.cls ? ' cls' : ''), tabindex: 0, role: 'button', 'aria-label': st.n }, s);
+            var top = CY - st.h / 2;
+            var box = svg('rect', { 'class': 'cnn-box', x: st.x, y: top, width: st.w, height: st.h, rx: i === 0 || i === N - 1 ? 8 : 4 }, g);
+            var o = { g: g, box: box };
+            if (i === 0) {
+                for (var c = 0; c < 7; c++) {
+                    var pts = [];
+                    for (var x = st.x + 6; x <= st.x + st.w - 6; x += 2) {
+                        pts.push(x + ',' + (top + 13 + c * 17.3 + 4.5 * Math.sin(x * 0.33 + c * 1.7) + 2.6 * Math.sin(x * 0.91 + c * 2.3)).toFixed(1));
+                    }
+                    svg('polyline', { 'class': 'cnn-trace', points: pts.join(' ') }, g);
+                }
+                o.win = svg('rect', { 'class': 'cnn-win', x: st.x + 6, y: top + 4, width: 46, height: st.h - 8, rx: 4 }, g);
+            } else if (i === N - 1) {
+                o.bars = SPEEDS.map(function (sp, k) {
+                    var yy = top + 20 + k * 29;
+                    svg('text', { 'class': 'lbl', x: st.x + 10, y: yy + 4 }, g).textContent = sp + ' m/s';
+                    svg('rect', { 'class': 'cnn-track', x: st.x + 66, y: yy - 6, width: 80, height: 12, rx: 3 }, g);
+                    return svg('rect', { 'class': 'cnn-bar', x: st.x + 66, y: yy - 6, width: 0, height: 12, rx: 3 }, g);
+                });
+            } else {
+                var rows = Math.max(3, Math.round(st.h / 9));
+                for (var r = 1; r < rows; r++) {
+                    svg('line', { 'class': 'cnn-row', x1: st.x + 1.5, x2: st.x + st.w - 1.5, y1: top + r * st.h / rows, y2: top + r * st.h / rows }, g);
+                }
+                if (st.blk) o.kern = svg('rect', { 'class': 'cnn-kern', x: st.x, y: top, width: Math.max(5, st.w * 0.28), height: st.h, rx: 3, opacity: 0 }, g);
+            }
+            svg('text', { 'class': 'lbl-strong', x: st.x + st.w / 2, y: 72, 'text-anchor': 'middle' }, g).textContent = st.n;
+            o.shape = svg('text', { 'class': 'cnn-shape', x: st.x + st.w / 2, y: 238, 'text-anchor': 'middle' }, g);
+            svg('rect', { 'class': 'hit', x: st.x - 14, y: 56, width: st.w + 28, height: 190 }, g);
+            g.addEventListener('click', function () { pause(); p = i + 0.99; render(); });
+            g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pause(); p = i + 0.99; render(); } });
+            return o;
         });
-        function shape(nd, Wn) { return nd.div ? '(' + nd.ch + ', ' + Math.floor(Wn / nd.div) + ')' : '(' + nd.ch + ')'; }
+        svg('text', { x: 300, y: 30, 'text-anchor': 'middle' }, s).textContent = 'time axis shrinks  ·  number of filters grows';
+        svg('line', { 'class': 'cnn-link', x1: 156, x2: 512, y1: 40, y2: 40 }, s);
+        svg('text', { x: 706, y: 30, 'text-anchor': 'middle' }, s).textContent = 'classifier';
+        svg('line', { 'class': 'cnn-link', x1: 566, x2: 846, y1: 40, y2: 40 }, s);
+
+        var p = 0, loop = 0, playing = false, last = 0, raf = null, curStage = -1, visible = true;
+        function shape(st, Wn) { return st.div ? '(' + st.ch + ', ' + Math.floor(Wn / st.div) + ')' : '(' + st.ch + ')'; }
+        function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
         function render() {
             var Wn = Math.round(parseFloat(slider.value) * 500);
+            var stage = Math.min(N - 1, Math.floor(p)), q = Math.min(1, p - stage);
+            var travel = stage > 0 && q < 0.3, proc = stage === 0 ? q : Math.max(0, (q - 0.3) / 0.7);
+            var st = ST[stage];
             $('#cnn-o').textContent = parseFloat(slider.value).toFixed(2) + ' s → W = ' + Wn + ' samples';
-            $$('.cnn-node', flow).forEach(function (b, i) {
-                var nd = NODES[i];
-                $('.shape', b).textContent = shape(nd, Wn);
-                $('.bar', b).style.width = (nd.div ? Math.max(4, Wn / nd.div / 1500 * 100) : 4) + '%';
-                b.setAttribute('aria-pressed', i === sel);
+            G.forEach(function (o, i) {
+                o.shape.textContent = shape(ST[i], Wn);
+                o.g.classList.toggle('active', i === stage && !travel);
+                o.g.classList.toggle('done', i < stage || (i === stage && travel && false));
+                o.g.classList.toggle('todo', i > stage || (i === stage && travel));
+                if (o.kern) {
+                    var on = i === stage && !travel && proc < 0.75;
+                    o.kern.setAttribute('opacity', on ? 1 : 0);
+                    if (on) {
+                        var sweep = (proc / 0.75 * 3) % 1, kw = +o.kern.getAttribute('width');
+                        o.kern.setAttribute('x', ST[i].x + ease(sweep) * (ST[i].w - kw));
+                    }
+                }
             });
-            var nd = NODES[sel];
-            $('.cnn-detail', host).innerHTML = '<b>' + nd.n + ' → output ' + shape(nd, Wn) + (nd.div ? ' (filters, time)' : '') + '.</b> ' + nd.d +
-                (nd.p ? ' ' + fmt(nd.p) + ' trainable parameters.' : '');
+            links.forEach(function (l, i) {
+                var on = travel && i === stage - 1;
+                l.dots.forEach(function (d, k) {
+                    var t = q / 0.3 * 1.5 - k * 0.25;
+                    var vis = on && t > 0 && t < 1;
+                    d.setAttribute('opacity', vis ? 1 : 0);
+                    if (vis) d.setAttribute('cx', l.x1 + ease(t) * (l.x2 - l.x1));
+                });
+            });
+            G[0].win.setAttribute('x', ST[0].x + 6 + ((loop % 4) * 18 + Math.min(1, p / N) * 18) % 60);
+            var probs = PROBS[loop % 4], grow = stage === N - 1 && !travel ? ease(Math.min(1, proc * 1.6)) : 0;
+            G[N - 1].bars.forEach(function (b, k) {
+                b.setAttribute('width', 80 * probs[k] * grow);
+                b.classList.toggle('top', probs[k] > 0.5);
+            });
+            var sub = st.blk && !travel ? Math.min(4, Math.floor(proc / 0.75 * 3)) : -1;
+            if (st.blk && !travel && proc >= 0.75) sub = proc < 0.88 ? 3 : 4;
+            $('.cnn-chain', host).classList.toggle('show', !!st.blk);
+            chain.forEach(function (c, k) {
+                c.classList.toggle('on', k === sub);
+                c.classList.toggle('skip', k === 3 && st.blk === 5);
+            });
+            if (stage !== curStage) {
+                curStage = stage;
+                $('.cnn-detail', host).innerHTML = '<b>' + st.n + ' → ' + shape(st, Wn) + (st.div ? ' (filters, time)' : '') + '.</b> ' + st.d +
+                    (st.p ? ' ' + fmt(st.p) + ' trainable parameters.' : '');
+            }
         }
-        slider.addEventListener('input', render);
-        render();
+        function frame() {
+            if (!playing) return;
+            var now = performance.now();
+            var dt = Math.max(0, Math.min(80, now - last)); last = now;
+            if (visible) {
+                p += dt / UNIT;
+                if (p >= N + 0.7) { p = 0; loop++; }
+                render();
+            }
+            raf = requestAnimationFrame(frame);
+        }
+        function setBtn() { $('#cnn-play').textContent = playing ? '❚❚ Pause' : '▶ Play'; }
+        function play() { if (playing) return; playing = true; last = performance.now(); setBtn(); raf = requestAnimationFrame(frame); }
+        function pause() { playing = false; if (raf) cancelAnimationFrame(raf); setBtn(); }
+        $('#cnn-play').addEventListener('click', function () { if (playing) pause(); else { if (p >= N) { p = 0; loop++; } play(); } });
+        $('#cnn-prev').addEventListener('click', function () { pause(); p = Math.max(0, Math.min(N - 1, Math.floor(p)) - 1) + 0.99; render(); });
+        $('#cnn-next').addEventListener('click', function () { pause(); p = Math.min(N - 1, Math.floor(p) + 1) + 0.99; render(); });
+        slider.addEventListener('input', function () { curStage = -1; render(); });
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: 0.15 }).observe(host);
+        }
+        setBtn(); render();
+        if (!reduce) play();
     })();
 
     /* ------------------------------------------------------------------ tabs */

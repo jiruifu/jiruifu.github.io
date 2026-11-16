@@ -259,13 +259,36 @@ input[type="range"] { accent-color: var(--accent); width: 190px; }
 .cv-train { fill: var(--young); } .cv-valid { fill: var(--older); } .cv-test { fill: var(--test); } .cv-idle { fill: var(--surface-2); }
 .cv-rect { transition: x .4s cubic-bezier(.2, .7, .2, 1), width .4s; }
 .cv-inlabel { fill: #fff !important; font-weight: 600; font-size: 12px; pointer-events: none; }
-.cnn-flow { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
-.cnn-node { flex: 1 0 76px; min-width: 0; border: 1px solid var(--line); border-radius: 10px; padding: 10px 8px; text-align: center; background: var(--bg); cursor: pointer; }
-.cnn-node[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
-.cnn-node b { display: block; font-size: .82rem; }
-.cnn-node .shape { display: block; font-family: var(--mono); font-size: .72rem; white-space: nowrap; color: var(--accent); margin-top: 4px; }
-.cnn-node .bar { display: block; height: 5px; border-radius: 3px; background: var(--young); margin: 8px auto 0; min-width: 3px; transition: width .2s; }
-.cnn-detail { margin-top: 12px; font-size: .88rem; color: var(--ink-2); min-height: 3.2em; }
+.cnn-scroll { overflow-x: auto; margin: 0 -4px; padding: 0 4px; }
+.cnn-viz { min-width: 700px; }
+.cnn-stage { cursor: pointer; outline: none; }
+.cnn-stage .hit { fill: transparent; }
+.cnn-box { fill: color-mix(in srgb, var(--young) 14%, var(--surface)); stroke: var(--young); stroke-width: 1.5; transition: fill .25s, stroke-width .2s, opacity .25s; }
+.cnn-stage.cls .cnn-box { fill: color-mix(in srgb, var(--test) 16%, var(--surface)); stroke: var(--test); }
+.cnn-stage.todo .cnn-box { opacity: .45; }
+.cnn-stage.active .cnn-box { stroke-width: 3; fill: color-mix(in srgb, var(--young) 30%, var(--surface)); }
+.cnn-stage.cls.active .cnn-box { fill: color-mix(in srgb, var(--test) 34%, var(--surface)); }
+.cnn-stage:focus-visible .cnn-box { stroke: var(--ink); stroke-width: 3; }
+.cnn-row { stroke: var(--young); stroke-opacity: .3; stroke-width: 1; }
+.cnn-stage.cls .cnn-row { stroke: var(--test); }
+.cnn-trace { fill: none; stroke: var(--young); stroke-width: 1.1; stroke-opacity: .8; }
+.cnn-win { fill: color-mix(in srgb, var(--older) 16%, transparent); stroke: var(--older); stroke-width: 2; }
+.cnn-kern { fill: var(--older); fill-opacity: .55; pointer-events: none; }
+.cnn-link { stroke: var(--axis); stroke-width: 1.5; }
+.cnn-arrow { fill: var(--axis); }
+.cnn-dot { fill: var(--older); }
+.cnn-track { fill: var(--surface-2); }
+.cnn-bar { fill: var(--test); fill-opacity: .45; }
+.cnn-bar.top { fill-opacity: 1; }
+.viz text.cnn-shape { font-family: var(--mono); font-size: 11px; fill: var(--accent); }
+.cnn-stage.active text.cnn-shape { font-weight: 700; }
+.cnn-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 12px; min-height: 30px; visibility: hidden; }
+.cnn-chain.show { visibility: visible; }
+.cnn-chain span { font-size: .78rem; padding: 4px 9px; border-radius: 6px; border: 1px solid var(--line); color: var(--ink-2); background: var(--bg); transition: background .15s, color .15s; }
+.cnn-chain span.on { background: var(--older); border-color: var(--older); color: #fff; }
+.cnn-chain span.skip { text-decoration: line-through; opacity: .45; }
+.cnn-chain i { color: var(--muted); font-style: normal; font-size: .8rem; }
+.cnn-detail { margin-top: 10px; font-size: .9rem; color: var(--ink-2); min-height: 4.6em; }
 .cnn-detail b { color: var(--ink); }
 
 /* ---------- references ---------- */
